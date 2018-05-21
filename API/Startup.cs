@@ -25,8 +25,14 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            string username = "GW";
+            string password = "haffatjuven1!";
+
             services.AddDbContext<CrimeContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("Server=tcp:sql-haffatjuven-dev.database.windows.net,1433;Initial Catalog=db-haffatjuven-dev;Persist Security Info=False;User ID=jens.malm@collectorbank.se;Password=haffatjuven1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;")));
+               
+
+                options.UseSqlServer($"Server=tcp:sql-haffatjuven-dev.database.windows.net,1433;Initial Catalog=db-haffatjuven-dev;Persist Security Info=False;User ID={username};Password={password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
 
             services.AddMvc();
 
