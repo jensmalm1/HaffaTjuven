@@ -31,12 +31,12 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post()
+        public IActionResult Post(User user)
         {
 
-            var added=_context.Add(new User{Name="Eric"});
+            _context.Add(user);
             _context.SaveChanges();
-            return Ok(added);
+            return Ok(user.Name);
         }
 
     }
