@@ -25,18 +25,19 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "Det", "Funakr" };
+            return Ok("Det Funakr");
         }
 
         [HttpPost]
-        public IActionResult Post(User user)
+        public IActionResult Post()
         {
-            _context.Add(user);
+
+            var added=_context.Add(new User{Name="Eric"});
             _context.SaveChanges();
-            return Ok(user.Name);
+            return Ok(added);
         }
-       
+
     }
 }
