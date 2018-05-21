@@ -6,18 +6,11 @@ namespace Data
 {
     public class CrimeContext : DbContext
     {
-        public DbSet<User> Customer { get; set; }
+        public DbSet<User> Users { get; set; }
 
-
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public CrimeContext(DbContextOptions<CrimeContext> context) : base(context)
         {
-
-
-            optionsBuilder.UseSqlServer(
-                "Server = (localdb)\\mssqllocaldb; Database = EfCrime; Trusted_Connection = True; ");
         }
-
 
     }
 }
