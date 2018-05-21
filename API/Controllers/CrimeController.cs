@@ -10,6 +10,7 @@ namespace API.Controllers
     public class CrimeController : Microsoft.AspNetCore.Mvc.Controller
     {
         // GET api/values
+        //test
         [HttpGet]
         public IEnumerable<string> Get()
         {
