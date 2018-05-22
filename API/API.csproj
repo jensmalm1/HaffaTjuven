@@ -13,13 +13,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\JavaScript.js" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj" />
     <ProjectReference Include="..\GUI\GUI.csproj" />
     <ProjectReference Include="..\User\Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\html\htmlpage.html" />
+    <None Include="wwwroot\html\index.html" />
+    <None Include="wwwroot\js\JavaScript.js" />
   </ItemGroup>
 
 </Project>
