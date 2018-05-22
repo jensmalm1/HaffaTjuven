@@ -30,8 +30,8 @@ namespace API.Controllers
             return Ok("Det Funakr");
         }
 
-        [HttpGet("map")]
-        public IActionResult GetMap()
+        [HttpGet("showusers")]
+        public IActionResult GetUsers()
         {
             return Ok(_context.Users.ToList());
         }

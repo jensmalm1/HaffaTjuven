@@ -1,8 +1,8 @@
-﻿$("#karta").click(function () {
+﻿$("#showUsersButton").click(function () {
 
 
     $.ajax({
-        url: "/api/map",
+        url: "/api/showusers",
 
         method: 'get',
 
