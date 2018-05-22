@@ -1,8 +1,38 @@
-﻿$("#showUsersButton").click(function () {
-
+﻿$("#addInformation").click(function () {
 
     $.ajax({
-        url: "/api/showusers",
+
+        url: "/api/AddInformation",
+        method: 'POST',
+        data: {
+            UserId: $('#userId').val(),
+            Content: $('#content').val(),
+        },
+
+        success: function (result) {
+
+            $("#returnStatus").html(" ✔️ Informationen tillagd");
+            $("#userId").val("");
+            $("#content").val("");
+
+        },
+
+        error: function (xhr, status, error) {
+
+            $("#returnStatus").html(" ❌ Ett fel har uppstått och information blev ej tillagd");
+            console.log("xhr", xhr);
+            console.log("status", status);
+            console.log("error", error);
+
+        }
+    });
+});
+
+
+$("#showUsersButton").click(function () {
+
+    $.ajax({
+        url: "/api/ShowUsers",
 
         method: 'get',
 

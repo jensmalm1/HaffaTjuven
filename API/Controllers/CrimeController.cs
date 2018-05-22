@@ -45,11 +45,12 @@ namespace API.Controllers
             return Ok(user.Name);
         }
 
-        [HttpPost]
+        [HttpPost("AddInformation")]
         public IActionResult AddInformation(Information information)
         {
 
-
+            _context.Add(information);
+            _context.SaveChanges();
             return Ok(information.Content);
 
         }
