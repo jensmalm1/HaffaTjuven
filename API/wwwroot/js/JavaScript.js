@@ -9,7 +9,7 @@ $("#addInformation").click(function () {
         method: 'POST',
         data: {
             UserId: $('#userId').val(),
-            Content: $('#content').val(),
+            Content: $('#content').val()
         },
 
         success: function (result) {
@@ -23,9 +23,9 @@ $("#addInformation").click(function () {
         error: function (xhr, status, error) {
 
             $("#returnStatus").html(" ❌ Ett fel har uppstått och information blev ej tillagd");
-            console.log("xhr", xhr);
-            console.log("status", status);
-            console.log("error", error);
+            //console.log("xhr", xhr);
+            //console.log("status", status);
+            //console.log("error", error);
 
         }
     });

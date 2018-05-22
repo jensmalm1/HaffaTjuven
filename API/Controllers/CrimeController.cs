@@ -51,6 +51,7 @@ namespace API.Controllers
            var user =  _context.Users.First();
             user.Informations.Add(information);
             _context.SaveChanges();
+
             return Ok(information.Content);
            
 
