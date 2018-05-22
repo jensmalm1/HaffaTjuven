@@ -21,7 +21,7 @@ namespace API.Controllers
         {
             _context = context;
 
-            _context.Database.EnsureCreated();
+            _context.Database.Migrate();
         }
 
         [HttpGet]
@@ -48,10 +48,11 @@ namespace API.Controllers
         [HttpPost("AddInformation")]
         public IActionResult AddInformation(Information information)
         {
-
-            _context.Add(information);
+           var user =  _context.Users.First();
+            user.Informations.Add(information);
             _context.SaveChanges();
             return Ok(information.Content);
+           
 
         }
 
