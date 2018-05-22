@@ -30,6 +30,12 @@ namespace API.Controllers
             return Ok("Det Funakr");
         }
 
+        [HttpGet("map")]
+        public IActionResult GetMap()
+        {
+            return Ok(_context.Users.ToList());
+        }
+
         [HttpPost]
         public IActionResult Post(User user)
         {
