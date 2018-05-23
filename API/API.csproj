@@ -22,4 +22,8 @@
     <None Include="wwwroot\js\JavaScript.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\frontend\" />
+  </ItemGroup>
+
 </Project>
