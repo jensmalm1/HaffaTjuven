@@ -3,14 +3,14 @@
 
 
 body {
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	font: 12px Arial, Helvetica, sans-serif;
-	font-size: 13px;
-	color: #061C37;
-	background: #1E4297;
-	background-repeat:repeat-x;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font: 12px Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #061C37;
+    background: #0e0d0c;
+    background-repeat: repeat-x;
 }
 *
 {
@@ -32,7 +32,7 @@ text-align:right;
 
 font-size:30px;
 color:#FFF;	
-left:550px;
+left:180px;
 top:100px;
 }
 
@@ -42,8 +42,8 @@ top:100px;
 position:absolute;
 text-align:right;
 color:#E1E7F7;	
-left:550px;
-top:130px;
+left:100px;
+top:150px;
 }
 
 #mainpic
@@ -56,13 +56,10 @@ height:402px;
 
 
 
-.lightblue
-{
-color:#B1C6FC	
-	
+.lightblue {
+
+    color: #4e4a45
 }
-
-
 
 
 #menu
@@ -85,6 +82,13 @@ padding-right:10px;
 padding-bottom:5px;
 }
 
+#contentpic {
+    background-image: url(images/haffatjuvenbild.png);
+    background-repeat: no-repeat;
+    width: 682px;
+    height: 451px;
+}
+
 #footer
 {
 width:inherit;
@@ -97,7 +101,7 @@ display:inline;
 text-align:center;
 font-size:12px;
 text-decoration:none;
-color:#7198E1;
+color:#4e4a45;
 }
 
 
@@ -133,10 +137,7 @@ color:#7198E1;
 	background: url(images/menuhov.jpg) no-repeat;
 }
 
-#content p
-{
-	
-}
+
 
 
 html, body {
