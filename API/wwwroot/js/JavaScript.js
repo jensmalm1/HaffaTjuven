@@ -1,8 +1,6 @@
-﻿alert('a');
-
+﻿
 $("#addInformation").click(function () {
 
-    alert('b');
     $.ajax({
 
         url: "/api/AddInformation",
@@ -12,22 +10,22 @@ $("#addInformation").click(function () {
             Content: $('#content').val()
         },
 
-        success: function (result) {
+        //success: function (result) {
 
-            $("#returnStatus").html(" ✔️ Informationen tillagd");
-            $("#userId").val("1");
-            $("#content").val("");
+        //    $("#returnStatus").html(" ✔️ Informationen tillagd");
+        //    $("#userId").val("1");
+        //    $("#content").val("");
 
-        },
+        //},
 
-        error: function (xhr, status, error) {
+        //error: function (xhr, status, error) {
 
-            $("#returnStatus").html(" ❌ Ett fel har uppstått och information blev ej tillagd");
-            //console.log("xhr", xhr);
-            //console.log("status", status);
-            //console.log("error", error);
+        //    $("#returnStatus").html(" ❌ Ett fel har uppstått och information blev ej tillagd");
+        //    //console.log("xhr", xhr);
+        //    //console.log("status", status);
+        //    //console.log("error", error);
 
-        }
+        //}
     });
 });
 
