@@ -1,4 +1,6 @@
 ﻿
+
+
 $("#addInformation").click(function () {
 
     $.ajax({
