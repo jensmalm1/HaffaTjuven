@@ -26,7 +26,13 @@
     
 </div>
 <div class="container">
-    <div class="menu" ><button id="crimeCategory" >Brottskategori</button> <button id="date" >Datum</button><button id="reward">Belöning</button></div>
+   
+    <div class="menu">
+        <form>
+            
+        <button id="crimeCategory" >Brottskategori</button>  <input id="date" type="date"></input>  <button id="reward">Belöning</button>  <button formaction="newuser.html">Registrera ny användare</button>
+        </form>
+        </div>
 </div>
 <div class="container">
     <h3>Detaljer för specifikt brott</h3>
@@ -35,19 +41,19 @@
 
 <div class="container">
     <button id="showUsersButton"> Visa användare! 🚓</button>
-    <a href="http://api-haffatjuven-dev.azurewebsites.net/api/ShowUsers"> Visa alla användare</a>
-   
+    <!--<a href="http://api-haffatjuven-dev.azurewebsites.net/api/ShowUsers"> Visa alla användare</a>-->
+    <a href="http://localhost:8116/api/ShowUsers"> Visa alla användare</a>
+
 </div>
 
 <div class="container">
 
     <h4>Lägg till en kommentar eller iakttagelse</h4>
 
-    Ny rubrik:<br />
+    
     <textarea id="content" value="" rows="6" style="width: 75%;"></textarea><br />
     Användare:<br />
-    <input id="userId" value="" style="width: 25%;" /><br />
-    <button id="addInformation">Ok</button>
+    <input id="userId" value="" style="width: 25%;" />  <button id="addInformation">Ok</button>
 
 </div>
 

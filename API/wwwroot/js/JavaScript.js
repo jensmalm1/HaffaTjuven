@@ -8,7 +8,7 @@ $("#addInformation").click(function () {
         data: {
             UserId: $('#userId').val(),
             Content: $('#content').val()
-        },
+        }
 
         //success: function (result) {
 
@@ -26,6 +26,20 @@ $("#addInformation").click(function () {
         //    //console.log("error", error);
 
         //}
+    });
+});
+
+$("#addUser").click(function () {
+
+    $.ajax({
+
+        url: "/api/AddUser",
+        method: 'POST',
+        data: {
+            Name: $('#name').val()
+        }
+
+        
     });
 });
 

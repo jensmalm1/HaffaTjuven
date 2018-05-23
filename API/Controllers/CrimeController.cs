@@ -35,20 +35,25 @@ namespace API.Controllers
             return Ok(_context.Users.Include(i=>i.Informations).ToList());
         }
 
-        [HttpPost]
+        [HttpPost("AddUser")]
         public IActionResult AddUser(User user)
         {
 
-            _context.Users.Add(user);
-            _context.SaveChanges();
-            return Ok(user.Name);
+            try
+            {
+                _context.Users.Add(user);
+                _context.SaveChanges();
+                return Ok(user.Name);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
         }
 
         [HttpPost("AddInformation")]
         public IActionResult AddInformation(Information information)
         {
-
-
             try
             {
                // var user = _context.Users.First();
@@ -60,7 +65,6 @@ namespace API.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
                 return BadRequest( e);
             }
         }
