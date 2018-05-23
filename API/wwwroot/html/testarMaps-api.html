@@ -36,6 +36,8 @@
 
       // Loop through the results array and place a marker for each
       // set of coordinates.
+
+
       window.eqfeed_callback = function(results) {
         for (var i = 0; i < results.data.length; i++) {
           var lat = results.data[i].lat;
@@ -46,7 +48,21 @@
             map: map
           });
         }
+      } 
+
+      window.eqfeed_callback = function(results) {
+          
+              //var lat = results.data[i].lat;
+              //var lng = results.data[i].lng;
+          var latLng = new google.maps.LatLng(57.7126219, 11.9664901);
+              var marker = new google.maps.Marker({
+                  position: latLng,
+                  map: map
+              });
+          
       }
+
+
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMRHku3oWIeSD-MbMBC8M6yJt2wU_T5c0&callback=initMap">
