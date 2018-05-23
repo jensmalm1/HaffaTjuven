@@ -72,14 +72,13 @@ float:left;
 clear:both;
 }
 
-#content
-{
-width:880px;
-height:auto;
-background-color:#FFF;
-padding-left:10px;
-padding-right:10px;
-padding-bottom:5px;
+#content {
+    width: 880px;
+    height: auto;
+    background-color: #0e0d0c;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
 }
 
 #contentpic {
