@@ -10,8 +10,6 @@ using Microsoft.EntityFrameworkCore;
 namespace API.Controllers
 {
 
-
-
     [Route("api/")]
     public class CrimeController : Controller
     {
@@ -20,7 +18,8 @@ namespace API.Controllers
         public CrimeController(CrimeContext context)
         {
             _context = context;
-
+            //_context.Database.EnsureDeleted();
+            //_context.Database.EnsureCreated();
             _context.Database.Migrate();
         }
 
@@ -30,7 +29,7 @@ namespace API.Controllers
             return Ok("Det Funakr");
         }
 
-        [HttpGet("showusers")]
+        [HttpGet("ShowUsers")]
         public IActionResult GetUsers()
         {
             return Ok(_context.Users.ToList());
@@ -48,7 +47,9 @@ namespace API.Controllers
         [HttpPost("AddInformation")]
         public IActionResult AddInformation(Information information)
         {
-           var user =  _context.Users.First();
+
+            var user = _context.Users.First();
+            //x => x.Id == information.UserId
             user.Informations.Add(information);
             _context.SaveChanges();
 

@@ -18,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\html\htmlpage.html" />
     <None Include="wwwroot\html\index.html" />
     <None Include="wwwroot\js\JavaScript.js" />
   </ItemGroup>

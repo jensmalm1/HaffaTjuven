@@ -30,8 +30,8 @@ namespace API
             string password = "haffatjuven1!";
 
             services.AddDbContext<CrimeContext>(options =>
-               
 
+                //options.UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = EfCrime; Trusted_Connection = True; "));
                 options.UseSqlServer($"Server=tcp:sql-haffatjuven-dev.database.windows.net,1433;Initial Catalog=db-haffatjuven;Persist Security Info=False;User ID={username};Password={password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
 
             services.AddMvc();

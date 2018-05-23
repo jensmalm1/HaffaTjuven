@@ -15,7 +15,7 @@ $("#addInformation").click(function () {
         success: function (result) {
 
             $("#returnStatus").html(" ✔️ Informationen tillagd");
-            $("#userId").val("");
+            $("#userId").val("1");
             $("#content").val("");
 
         },
