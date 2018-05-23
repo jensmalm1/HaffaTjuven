@@ -1,8 +1,8 @@
-﻿alert('a')
+﻿alert('a');
 
 $("#addInformation").click(function () {
 
-    alert('b')
+    alert('b');
     $.ajax({
 
         url: "/api/AddInformation",

@@ -7,6 +7,7 @@ namespace Data
     public class CrimeContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Information> Informations { get; set; }
         public CrimeContext(DbContextOptions<CrimeContext> context) : base(context)
         {
         }

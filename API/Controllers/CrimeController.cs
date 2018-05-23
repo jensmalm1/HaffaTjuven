@@ -19,8 +19,8 @@ namespace API.Controllers
         {
             _context = context;
             //_context.Database.EnsureDeleted();
-            //_context.Database.EnsureCreated();
-            _context.Database.Migrate();
+            _context.Database.EnsureCreated();
+            //_context.Database.Migrate();
         }
 
         [HttpGet]
@@ -32,14 +32,14 @@ namespace API.Controllers
         [HttpGet("ShowUsers")]
         public IActionResult GetUsers()
         {
-            return Ok(_context.Users.ToList());
+            return Ok(_context.Users.Include(i=>i.Informations).ToList());
         }
 
         [HttpPost]
         public IActionResult AddUser(User user)
         {
 
-            _context.Add(user);
+            _context.Users.Add(user);
             _context.SaveChanges();
             return Ok(user.Name);
         }
@@ -48,12 +48,21 @@ namespace API.Controllers
         public IActionResult AddInformation(Information information)
         {
 
-            var user = _context.Users.First();
-            //x => x.Id == information.UserId
-            user.Informations.Add(information);
-            _context.SaveChanges();
 
-            return Ok(information.Content);
+            try
+            {
+               // var user = _context.Users.First();
+                //x => x.Id == information.UserId
+                _context.Informations.Add(information);
+                _context.SaveChanges();
+
+                return Ok(information.Content);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return BadRequest( e);
+            }
         }
 
 

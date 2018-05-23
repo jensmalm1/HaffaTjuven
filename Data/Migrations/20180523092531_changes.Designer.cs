@@ -11,9 +11,10 @@ using System;
 namespace Data.Migrations
 {
     [DbContext(typeof(CrimeContext))]
-    partial class CrimeContextModelSnapshot : ModelSnapshot
+    [Migration("20180523092531_changes")]
+    partial class changes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,7 +34,7 @@ namespace Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Informations");
+                    b.ToTable("Information");
                 });
 
             modelBuilder.Entity("Domain.User", b =>
@@ -50,7 +51,7 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Domain.Information", b =>
                 {
-                    b.HasOne("Domain.User")
+                    b.HasOne("Domain.User", "User")
                         .WithMany("Informations")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
