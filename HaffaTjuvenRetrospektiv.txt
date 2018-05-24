@@ -1,0 +1,19 @@
+Bra
+ - Känner mig välkommen
+ - Trello fungerar bra. Det är lätt att se vem som gör vad
+ - Det går framåt
+ - Bra gemenskap i gruppen
+
+Dåligt
+ - Ofokuserade ibland
+ - Små oplanerade stand-ups, vore bra att ha bestämda stand-ups också
+ - Azure är bökigt och buggigt
+ - Otydliga user stories
+
+Action - mätbar
+ - Bli bättre på at ta raster för att fokusera bättre
+ - Fasta stand-ups
+ - Behöver lära oss mer om Azure
+ - Dela upp user stories som är för stora och formulera om så de är lättare att förstå.
+ 
+ 
