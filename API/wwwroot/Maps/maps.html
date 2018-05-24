@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<h3>My Google Maps Demo</h3>
+<div id="map"></div>
+	
+<script
+    src="http://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+
+<script>
+    var map;
+    $.ajax({
+        url: "https://brottsplatskartan.se/api/events/?type=inbrott",
+ 
+        // The name of the callback parameter, as specified by the YQL service
+        jsonp: "callback",
+ 
+        // Tell jQuery we're expecting JSONP
+        dataType: "jsonp",
+ 
+        // Work with the response
+        success: function (response) {
+
+            for (let x of response.data) {
+                console.log(x.lat, x.lng);
+                createMarker(x.lat, x.lng);
+            }
+            //console.log( response ); // server response
+        }
+    });
+	
+    function createMarker(lat, lng)
+    {
+        var marker = new google.maps.Marker({
+            position: {lat: lat, lng: lng},
+            map: map
+        });
+    }
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: {lat: 61, lng: 14.8}
+        });	
+      }
+    </script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMRHku3oWIeSD-MbMBC8M6yJt2wU_T5c0&callback=initMap">
+</script>
+</body>
+</html>
