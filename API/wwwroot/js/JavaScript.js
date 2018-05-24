@@ -38,13 +38,14 @@ $("#addUser").click(function () {
         url: "/api/AddUser",
         method: 'POST',
         data: {
-            Name: $('#name').val()
-        },
-
-        success: function(userId) {
-           
-            alert(userId);
+            UserName: $('#userName').val(),
+            Password: $('#password').val()
         }
+
+        //success: function(result) {
+           
+        //    alert(result);
+        //}
         
 
         

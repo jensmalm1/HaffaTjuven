@@ -11,8 +11,8 @@ using System;
 namespace Data.Migrations
 {
     [DbContext(typeof(CrimeContext))]
-    [Migration("20180523093612_changes2")]
-    partial class changes2
+    [Migration("20180524093217_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,7 +34,7 @@ namespace Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Information");
+                    b.ToTable("Informations");
                 });
 
             modelBuilder.Entity("Domain.User", b =>
@@ -42,7 +42,9 @@ namespace Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Password");
+
+                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 

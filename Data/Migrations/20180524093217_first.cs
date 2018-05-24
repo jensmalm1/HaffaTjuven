@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Data.Migrations
 {
-    public partial class First : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,8 +15,8 @@ namespace Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Kalle = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
+                    Password = table.Column<string>(nullable: true),
+                    Username = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -24,7 +24,7 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Information",
+                name: "Informations",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -34,9 +34,9 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Information", x => x.Id);
+                    table.PrimaryKey("PK_Informations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Information_Users_UserId",
+                        name: "FK_Informations_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -44,15 +44,15 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Information_UserId",
-                table: "Information",
+                name: "IX_Informations_UserId",
+                table: "Informations",
                 column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Information");
+                name: "Informations");
 
             migrationBuilder.DropTable(
                 name: "Users");
