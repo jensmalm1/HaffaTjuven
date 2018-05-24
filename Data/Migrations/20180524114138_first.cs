@@ -16,7 +16,7 @@ namespace Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Password = table.Column<string>(nullable: true),
-                    Username = table.Column<string>(nullable: true)
+                    UserName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

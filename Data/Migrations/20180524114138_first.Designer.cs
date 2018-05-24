@@ -11,7 +11,7 @@ using System;
 namespace Data.Migrations
 {
     [DbContext(typeof(CrimeContext))]
-    [Migration("20180524093217_first")]
+    [Migration("20180524114138_first")]
     partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
