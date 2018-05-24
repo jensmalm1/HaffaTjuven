@@ -43,7 +43,7 @@ namespace API.Controllers
             {
                 _context.Users.Add(user);
                 _context.SaveChanges();
-                return Ok(user.Name);
+                return Ok(user.Name +" "+ user.Id);
             }
             catch (Exception e)
             {
