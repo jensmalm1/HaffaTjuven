@@ -39,7 +39,13 @@ $("#addUser").click(function () {
         method: 'POST',
         data: {
             Name: $('#name').val()
+        },
+
+        success: function(userId) {
+           
+            alert(userId);
         }
+        
 
         
     });
