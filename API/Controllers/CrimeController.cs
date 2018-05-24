@@ -43,7 +43,7 @@ namespace API.Controllers
             {
                 _context.Users.Add(user);
                 _context.SaveChanges();
-                return Ok(user.UserName +" "+ user.Id);
+                return Ok($"Användare {user.UserName} tillagd med ID {user.Id}");
             }
             catch (Exception e)
             {

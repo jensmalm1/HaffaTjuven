@@ -10,24 +10,19 @@ $("#addInformation").click(function () {
         data: {
             UserId: $('#userId').val(),
             Content: $('#content').val()
+        },
+
+        success: function (result) {
+
+            alert(result);
+
+        },
+
+        error: function (error) {
+
+            alert("Nu blev det fel");
         }
 
-        //success: function (result) {
-
-        //    $("#returnStatus").html(" ✔️ Informationen tillagd");
-        //    $("#userId").val("1");
-        //    $("#content").val("");
-
-        //},
-
-        //error: function (xhr, status, error) {
-
-        //    $("#returnStatus").html(" ❌ Ett fel har uppstått och information blev ej tillagd");
-        //    //console.log("xhr", xhr);
-        //    //console.log("status", status);
-        //    //console.log("error", error);
-
-        //}
     });
 });
 
@@ -40,12 +35,13 @@ $("#addUser").click(function () {
         data: {
             UserName: $('#userName').val(),
             Password: $('#password').val()
-        }
+        },
 
-        //success: function(result) {
+        success: function(result) {
            
-        //    alert(result);
-        //}
+            alert(result);
+            
+        }
         
 
         
