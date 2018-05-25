@@ -60,7 +60,7 @@
                 <script>
                     var map;
                     $.ajax({
-                        url: "https://brottsplatskartan.se/api/events/?type=inbrott&app=haffatjuven",
+                        url: "https://brottsplatskartan.se/api/events/?app=haffatjuven",
 
                         // The name of the callback parameter, as specified by the YQL service
                         jsonp: "callback",
@@ -76,20 +76,32 @@
                             }
                         }
                     });
+
                     var crimeId = 0;
+
                     function createMarker(lat, lng, id, title_type, description, content, date_human) {
-                        var marker = new google.maps.Marker({
-                            position: { lat: lat, lng: lng },
-                            map: map,
-                            icon: '../html/images/police-car.png'
-                        });
+
+
+                        if (title_type === "Brand") {
+                            var marker = new google.maps.Marker({
+                                position: { lat: lat, lng: lng },
+                                map: map,
+                                icon: '../html/images/brand.png'
+                            });
+                        } else {
+                            var marker = new google.maps.Marker({
+                                position: { lat: lat, lng: lng },
+                                map: map,
+                                icon: '../html/images/police-car.png'
+                            });
+                        }
+                    
 
                         //https://cdn4.iconfinder.com/data/icons/medical-blood-1/512/blood_drop-32.png
 
                         marker.addListener('click', function () {
                             document.getElementById("crimeInfo").innerHTML = ('<h1>' + description + '</h1>' + content + date_human);
                             document.getElementById("crimeId").value = (id);
-
                         });
 
                     }
