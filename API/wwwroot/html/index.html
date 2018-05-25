@@ -72,12 +72,12 @@
                         success: function (response) {
 
                             for (let x of response.data) {
-                                createMarker(x.lat, x.lng, x.id, x.title_type, x.description, x.content, x.pubdate_ios8601);
+                                createMarker(x.lat, x.lng, x.id, x.title_type, x.description, x.content, x.date_human);
                             }
                         }
                     });
                     var crimeId = 0;
-                    function createMarker(lat, lng, id, title_type, description, content, pubdate_ios8601) {
+                    function createMarker(lat, lng, id, title_type, description, content, date_human) {
                         var marker = new google.maps.Marker({
                             position: { lat: lat, lng: lng },
                             map: map,
@@ -87,7 +87,7 @@
                         //https://cdn4.iconfinder.com/data/icons/medical-blood-1/512/blood_drop-32.png
 
                         marker.addListener('click', function () {
-                            document.getElementById("crimeInfo").innerHTML = ('<h1>' + description + '</h1>' + content + pubdate_ios8601);
+                            document.getElementById("crimeInfo").innerHTML = ('<h1>' + description + '</h1>' + content + date_human);
                             document.getElementById("crimeId").value = (id);
 
                         });
@@ -189,10 +189,11 @@
 
 
 
-                <div class="container">
+                <div id="crimeInterface" class="container">
 
                     <h4>Lägg till en kommentar eller iakttagelse</h4>
                     <textarea id="content" value="" rows="6" style="width: 75%;background-color: lightyellow"></textarea><br />
+                    <br/>
                     AnvändarID:<br />
                     <input id="userId" value="" style="width: 25%;" />
                     <input id="crimeId" value="" type="hidden" />
@@ -205,17 +206,8 @@
 
                 <div id="includedMaps"></div>
 
-                <h2>Text hära</h2>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <h3>Template Notes</h3>
-                <p>Mer text.</p>
-                <p>&nbsp;</p>
-                <h3>.....</h3>
-
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
+                
+                
 
             </body>
 

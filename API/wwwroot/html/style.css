@@ -36,7 +36,9 @@ left:180px;
 top:100px;
 }
 
-
+#crimeInterface {
+    padding: 20px;
+}
 #mainpic h2
 {
 position:absolute;
