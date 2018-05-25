@@ -56,6 +56,7 @@ namespace API.Controllers
         {
             try
             {
+               
                // var user = _context.Users.First();
                 //x => x.Id == information.UserId
                 _context.Informations.Add(information);

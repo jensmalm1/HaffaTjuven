@@ -9,7 +9,8 @@ $("#addInformation").click(function () {
         method: 'POST',
         data: {
             UserId: $('#userId').val(),
-            Content: $('#content').val()
+            Content: $('#content').val(),
+            CrimeId:$(crimeId).val()
         },
 
         success: function (result) {
@@ -67,3 +68,4 @@ $("#showUsersButton").click(function () {
         }
     });
 });
+
