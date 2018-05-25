@@ -16,6 +16,7 @@ $("#addInformation").click(function () {
         success: function (result) {
 
             alert(result);
+            document.getElementById('#userId').value = "";
 
         },
 
