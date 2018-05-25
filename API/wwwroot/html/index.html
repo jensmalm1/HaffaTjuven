@@ -88,6 +88,14 @@
                                 map: map,
                                 icon: '../html/images/brand.png'
                             });
+
+                        }else if (title_type === "Fylleri/LOB") {
+                                var marker = new google.maps.Marker({
+                                    position: { lat: lat, lng: lng },
+                                    map: map,
+                                    icon: '../html/images/Fylleri_LOB.png'
+                                });
+
                         } else {
                             var marker = new google.maps.Marker({
                                 position: { lat: lat, lng: lng },
