@@ -87,8 +87,8 @@
                         //https://cdn4.iconfinder.com/data/icons/medical-blood-1/512/blood_drop-32.png
 
                         marker.addListener('click', function () {
-                            document.getElementById("crimeInfo").innerHTML = ('<h1>' + description + '</h1>' + content + pubdate_ios8601)
-                            crimeId = id;
+                            document.getElementById("crimeInfo").innerHTML = ('<h1>' + description + '</h1>' + content + pubdate_ios8601);
+                            document.getElementById("crimeId").value = (id);
 
                         });
 
@@ -195,7 +195,7 @@
                     <textarea id="content" value="" rows="6" style="width: 75%;background-color: lightyellow"></textarea><br />
                     AnvändarID:<br />
                     <input id="userId" value="" style="width: 25%;" />
-
+                    <input id="crimeId" value="" type="hidden" />
                     <button id="addInformation">Ok</button>
                     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
                     <script src="../js/JavaScript.js"></script>

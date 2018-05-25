@@ -10,7 +10,7 @@ $("#addInformation").click(function () {
         data: {
             UserId: $('#userId').val(),
             Content: $('#content').val(),
-            CrimeId:$(crimeId).val()
+            CrimeId:$('#crimeId').val()
         },
 
         success: function (result) {
