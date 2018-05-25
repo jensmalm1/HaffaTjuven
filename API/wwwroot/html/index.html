@@ -30,7 +30,7 @@
 <div id="container">
 		<div id="mainpic">
         	<h1>Haffa<span class="lightblue">Tjuven</span></h1>
-            <h2>Eric!! slogan pls1!</h2>
+            <h2></h2>
         </div>   
     <p>&nbsp;</p>
         <div id="menu">
@@ -60,7 +60,7 @@
                 <script>
                     var map;
                     $.ajax({
-                        url: "https://brottsplatskartan.se/api/events/?app=haffatjuven",
+                        url: "https://brottsplatskartan.se/api/events/?app=haffatjuven&type=",
 
                         // The name of the callback parameter, as specified by the YQL service
                         jsonp: "callback",
@@ -103,14 +103,31 @@
                                 icon: '../html/images/Trafikolycka.png'
                             });
                         }
-                        //else if (title_type === "St\u00f6ld") {
-                        //    var marker = new google.maps.Marker({
-                        //        position: { lat: lat, lng: lng },
-                        //        map: map,
-                        //        icon: '../html/images/Trafikolycka.png'
-                        //    });
-                        //}
-                        St\u00f6ld
+                        else if (title_type === "Inbrott") {
+                            var marker = new google.maps.Marker({
+                                position: { lat: lat, lng: lng },
+                                map: map,
+                                icon: '../html/images/Inbrott.png'
+                            });
+                        }
+
+                        else if (title_type === "Misshandel") {
+                            var marker = new google.maps.Marker({
+                                position: { lat: lat, lng: lng },
+                                map: map,
+                                icon: '../html/images/Misshandel.png'
+                            });
+                        }
+
+                        else if (title_type.startsWith(`Mord`)){
+                            var marker = new google.maps.Marker({
+                                position: { lat: lat, lng: lng },
+                                map: map,
+                                icon: '../html/images/Mord_dr_u00e5p.png'
+                            });
+                        }
+                        
+                       
                         else {
                             var marker = new google.maps.Marker({
                                 position: { lat: lat, lng: lng },
