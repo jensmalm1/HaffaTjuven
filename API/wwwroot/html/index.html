@@ -76,7 +76,7 @@
                             }
                         }
                     });
-
+                    var crimeId = 0;
                     function createMarker(lat, lng, id, title_type, description, content, pubdate_ios8601) {
                         var marker = new google.maps.Marker({
                             position: { lat: lat, lng: lng },
@@ -88,6 +88,8 @@
 
                         marker.addListener('click', function () {
                             document.getElementById("crimeInfo").innerHTML = ('<h1>' + description + '</h1>' + content + pubdate_ios8601)
+                            crimeId = id;
+
                         });
 
                     }
