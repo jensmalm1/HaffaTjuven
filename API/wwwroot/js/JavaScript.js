@@ -70,3 +70,29 @@ $("#showUsersButton").click(function () {
     });
 });
 
+function getUserInformation() {
+    var userName = $("#userName").val();
+    //var password = $("#password").val();
+
+    $.ajax({
+            url: '/api/ShowUserInformation',
+
+            data: { userName: userName, password:password }
+
+        })
+        .done(function (result) {
+            console.log(result);
+            
+                $("#userId").val(result.userId);
+                $("#userName").val(result.name);
+                $("#bounty").val(result.bounty);
+                $("#information").val(result.information);
+            
+
+        })
+        .fail(function (xhr, status, error) {
+
+            alert("Går att hämta användarinformationen");
+        });
+}
+
