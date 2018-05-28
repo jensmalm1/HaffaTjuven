@@ -51,6 +51,45 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("CheckIfUserExists")]
+        public IActionResult LoggInUser(string userInput)
+        {
+
+            var user = new User
+            {
+                UserName = userInput
+            };
+
+            var listOfUsers = new List<string>();
+            try
+            {
+                listOfUsers = _context.Users.Select(n=>n.UserName).ToList();
+        
+             
+                if (listOfUsers.Contains(u=>u,user.UserName))
+                {
+
+                    return Ok("funkar");
+                }
+
+                return Ok("Funkar ej");
+
+            }
+            catch (Exception e)
+            {
+                return Ok(e);
+
+            }
+           
+
+
+
+            //User getUser;
+            //getUser = _context.Users.Single(u => u.UserName == user.UserName);
+            //return Ok(getUser);
+        }
+
+
         [HttpPost("AddInformation")]
         public IActionResult AddInformation(Information information)
         {
