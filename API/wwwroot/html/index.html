@@ -258,21 +258,32 @@
                     var filterUrl = "https://brottsplatskartan.se/api/events/?app=haffatjuven";
                 </script>
 
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Filtrera brott
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" onclick="changeFilterUrl('inbrott')" style="cursor: pointer">Inbrott</a>
-                        <a class="dropdown-item" onclick="changeFilterUrl('brand')">Brand</a>
-                        <a class="dropdown-item" onclick="changeFilterUrl('Misshandel')">Misshandel</a>
-                        <a class="dropdown-item" onclick="changeFilterUrl('Fylleri/LOB')">Fylleri/LOB</a>
-                        <a class="dropdown-item" onclick="changeFilterUrl('Mord')">Mord</a>
-                    </div>
+            <div class="btn-group dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filtrera brott
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" onclick="changeFilterUrl('inbrott')">Inbrott</a>
+                    <a class="dropdown-item" onclick="changeFilterUrl('brand')">Brand</a>
+                    <a class="dropdown-item" onclick="changeFilterUrl('Misshandel')">Misshandel</a>
+                    <a class="dropdown-item" onclick="changeFilterUrl('Fylleri/LOB')">Fylleri/LOB</a>
+                    <a class="dropdown-item" onclick="changeFilterUrl('Mord')">Mord</a>
                 </div>
+            </div>
+            
+            <div class="btn-group dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Region
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Göteborg')">Göteborg</a>
+                    
+                </div>
+            </div>
+                
 
 
-                <script>
+            <script>
 
                     function changeFilterUrl(type) {
 
@@ -281,8 +292,6 @@
                         }
 
                         filterUrl = "https://brottsplatskartan.se/api/events/?app=haffatjuven&type=" + type;
-                        //TODO uppdatera ajax så den kör onclick
-
 
                         $.ajax({
                             url: filterUrl,
@@ -301,6 +310,29 @@
                         });
                     }
 
+                function changeFilterLocationUrl(location) {
+                    for (var i = 0; i < markers.length; i++) {
+                        markers[i].setMap(null);
+                    }
+
+                    filterUrl = "https://brottsplatskartan.se/api/events/?app=haffatjuven&location=" + location;
+
+                    $.ajax({
+                        url: filterUrl,
+
+                        // The name of the callback parameter, as specified by the YQL service
+                        jsonp: "callback",
+                        // Tell jQuery we're expecting JSONP
+                        dataType: "jsonp",
+                        // Work with the response
+                        success: function (response) {
+
+                            for (let x of response.data) {
+                                createMarker(x.lat, x.lng, x.id, x.title_type, x.description, x.content, x.date_human);
+                            }
+                        }
+                    });
+                }
 
                 </script>
 

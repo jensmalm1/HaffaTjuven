@@ -32,7 +32,7 @@ namespace API.Controllers
         [HttpGet("ShowUsers")]
         public IActionResult GetUsers()
         {
-            return Ok(_context.Users.Include(i=>i.Informations).ToList());
+            return Ok(_context.Users.Include(i => i.Informations).ToList());
         }
 
         [HttpPost("AddUser")]
@@ -63,10 +63,10 @@ namespace API.Controllers
             var listOfUsers = new List<string>();
             try
             {
-                listOfUsers = _context.Users.Select(n=>n.UserName).ToList();
-        
-             
-                if (listOfUsers.Contains(u=>u,user.UserName))
+                listOfUsers = _context.Users.Select(n => n.UserName).ToList();
+
+
+                //if (listOfUsers.Contains(u => u, user.UserName))
                 {
 
                     return Ok("funkar");
@@ -80,7 +80,7 @@ namespace API.Controllers
                 return Ok(e);
 
             }
-           
+
 
 
 
@@ -95,8 +95,8 @@ namespace API.Controllers
         {
             try
             {
-               
-               // var user = _context.Users.First();
+
+                // var user = _context.Users.First();
                 //x => x.Id == information.UserId
                 _context.Informations.Add(information);
                 _context.SaveChanges();
@@ -105,7 +105,7 @@ namespace API.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest( e);
+                return BadRequest(e);
             }
         }
 
