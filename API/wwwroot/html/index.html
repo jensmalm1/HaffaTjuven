@@ -2,24 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../html/bootstrap.css" />  
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />-->
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="style.css" />
     <title>HaffaTjuven</title>
-
-    <script src="jquery.js"></script>
-    <script>
-        $(function () {
-            $("#includedMaps").load("maps.html");
-        });
-    </script>
 
     <style>
         #map {
@@ -55,11 +45,11 @@
             <body>
                 <h3>Brottsplatskarta</h3>
                 <div id="map"></div>
-
-                <script src="http://code.jquery.com/jquery-3.3.1.js"
-                        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-                        crossorigin="anonymous">
-                </script>
+                
+    <script src="http://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous">
+    </script>
 
                 <script>
                     var map;
@@ -82,16 +72,19 @@
                     });
 
                     var crimeId = 0;
+                    var marker = "";
+                    var markers = [];
 
                     function createMarker(lat, lng, id, title_type, description, content, date_human) {
-
+                        
 
                         if (title_type === "Brand") {
                             var marker = new google.maps.Marker({
                                 position: { lat: lat, lng: lng },
                                 map: map,
                                 icon: '../html/images/brand.png'
-                            });
+                                
+                        });
 
                         } else if (title_type === "Fylleri/LOB") {
                             var marker = new google.maps.Marker({
@@ -147,7 +140,7 @@
                                 icon: '../html/images/police-car.png'
                             });
                         }
-
+                        markers.push(marker);
 
                         marker.addListener('click', function () {
                             document.getElementById("crimeInfo").innerHTML = ('<h1>' + description + '</h1>' + content + date_human);
@@ -159,9 +152,9 @@
                         });
 
                         marker.addListener('mouseover',
-                            function() {
+                            function () {
                                 infowindow.open(map, marker);
-                                setTimeout(function() {
+                                setTimeout(function () {
                                     infowindow.close(map, marker)
                                 }, 500);
                             });
@@ -254,30 +247,64 @@
                         });
                     }
                 </script>
-                <script async=async async=async defer=defer defer=defer
+                <script async defer
                         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMRHku3oWIeSD-MbMBC8M6yJt2wU_T5c0&callback=initMap">
                 </script>
-
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Filtrera brott
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                <div id="crimeInfo">
                 </div>
-            </div>
-
-            
-            
 
 
-            <script>
-                $(document).ready(function(){
-                    $(".dropdown-toggle").dropdown();
-                });
-            </script>
+                <script>
+                    var filterUrl = "https://brottsplatskartan.se/api/events/?app=haffatjuven";
+                </script>
+
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Filtrera brott
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" onclick="changeFilterUrl('inbrott')" style="cursor: pointer">Inbrott</a>
+                        <a class="dropdown-item" onclick="changeFilterUrl('brand')">Brand</a>
+                        <a class="dropdown-item" onclick="changeFilterUrl('Misshandel')">Misshandel</a>
+                        <a class="dropdown-item" onclick="changeFilterUrl('Fylleri/LOB')">Fylleri/LOB</a>
+                        <a class="dropdown-item" onclick="changeFilterUrl('Mord')">Mord</a>
+                    </div>
+                </div>
+
+
+                <script>
+
+                    function changeFilterUrl(type) {
+
+                        for (var i = 0; i < markers.length; i++) {
+                            markers[i].setMap(null);
+                        }
+
+                        filterUrl = "https://brottsplatskartan.se/api/events/?app=haffatjuven&type=" + type;
+                        //TODO uppdatera ajax så den kör onclick
+
+
+                        $.ajax({
+                            url: filterUrl,
+
+                            // The name of the callback parameter, as specified by the YQL service
+                            jsonp: "callback",
+                            // Tell jQuery we're expecting JSONP
+                            dataType: "jsonp",
+                            // Work with the response
+                            success: function (response) {
+
+                                for (let x of response.data) {
+                                    createMarker(x.lat, x.lng, x.id, x.title_type, x.description, x.content, x.date_human);
+                                }
+                            }
+                        });
+                    }
+
+
+                </script>
+
+
 
 
 
