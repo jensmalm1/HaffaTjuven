@@ -1,22 +1,26 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />-->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <title>HaffaTjuven</title>
 
     <script src="jquery.js"></script>
     <script>
-        $(function() {
+        $(function () {
             $("#includedMaps").load("maps.html");
         });
     </script>
-    
+
     <style>
         #map {
             height: 400px;
@@ -89,11 +93,11 @@
                                 icon: '../html/images/brand.png'
                             });
 
-                        }else if (title_type === "Fylleri/LOB") {
-                                var marker = new google.maps.Marker({
-                                    position: { lat: lat, lng: lng },
-                                    map: map,
-                                    icon: '../html/images/Fylleri_LOB.png'
+                        } else if (title_type === "Fylleri/LOB") {
+                            var marker = new google.maps.Marker({
+                                position: { lat: lat, lng: lng },
+                                map: map,
+                                icon: '../html/images/Fylleri_LOB.png'
                             });
                         }
                         else if (title_type === "Trafikolycka") {
@@ -119,7 +123,7 @@
                             });
                         }
 
-                        else if (title_type.startsWith(`Mord`)){
+                        else if (title_type.startsWith(`Mord`)) {
                             var marker = new google.maps.Marker({
                                 position: { lat: lat, lng: lng },
                                 map: map,
@@ -127,7 +131,7 @@
                             });
                         }
 
-                        else if (title_type.startsWith("St")){
+                        else if (title_type.startsWith("St")) {
                             var marker = new google.maps.Marker({
                                 position: { lat: lat, lng: lng },
                                 map: map,
@@ -135,7 +139,7 @@
                             });
                         }
 
-                       
+
                         else {
                             var marker = new google.maps.Marker({
                                 position: { lat: lat, lng: lng },
@@ -143,14 +147,24 @@
                                 icon: '../html/images/police-car.png'
                             });
                         }
-                    
 
-                        //https://cdn4.iconfinder.com/data/icons/medical-blood-1/512/blood_drop-32.png
 
                         marker.addListener('click', function () {
                             document.getElementById("crimeInfo").innerHTML = ('<h1>' + description + '</h1>' + content + date_human);
                             document.getElementById("crimeId").value = (id);
                         });
+
+                        var infowindow = new google.maps.InfoWindow({
+                            content: title_type
+                        });
+
+                        marker.addListener('mouseover',
+                            function() {
+                                infowindow.open(map, marker);
+                                setTimeout(function() {
+                                    infowindow.close(map, marker)
+                                }, 500);
+                            });
 
                     }
                     function initMap() {
@@ -240,12 +254,30 @@
                         });
                     }
                 </script>
-                <script async=async defer=defer
+                <script async=async async=async defer=defer defer=defer
                         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMRHku3oWIeSD-MbMBC8M6yJt2wU_T5c0&callback=initMap">
                 </script>
-                <div id="crimeInfo">
-                </div>
 
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filtrera brott
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+
+            
+            
+
+
+            <script>
+                $(document).ready(function(){
+                    $(".dropdown-toggle").dropdown();
+                });
+            </script>
 
 
 
@@ -253,7 +285,7 @@
 
                     <h4>Lägg till en kommentar eller iakttagelse</h4>
                     <textarea id="content" value="" rows="6" style="width: 75%;background-color: lightyellow"></textarea><br />
-                    <br/>
+                    <br />
                     AnvändarID:<br />
                     <input id="userId" value="" style="width: 25%;" />
                     <input id="crimeId" value="" type="hidden" />
@@ -266,8 +298,8 @@
 
                 <div id="includedMaps"></div>
 
-                
-                
+
+
 
             </body>
 
