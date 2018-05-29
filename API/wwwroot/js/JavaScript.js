@@ -122,7 +122,7 @@ function GetInformation() {
             console.log(result);
 
 
-            $("#information").list(result);
+            $("#information").text(result);
             //$("#bounty").val(result.bounty);
             //$("#information").val(result.information);
 
