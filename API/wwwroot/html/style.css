@@ -17,12 +17,12 @@ body {
   margin: 0 auto 0 auto;
  text-align:left;}
 
-#container
-{
-  display: block; 
-  height:auto;
-  position: relative; 
-  width: 940px;
+
+#container {
+    display: block;
+    height: auto;
+    position: relative;
+    width: 940px;
 }
 
 #mainpic h1
@@ -42,6 +42,7 @@ top:100px;
 #crimeInfo {
     padding: 20px;
 }
+
 #mainpic h2
 {
 position:absolute;
