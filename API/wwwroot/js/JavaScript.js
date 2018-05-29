@@ -94,7 +94,7 @@ function getUserInformation() {
     //var password = $("#password").val();
 
     $.ajax({
-            url: '/api/ShowUserInformation',
+            url: '/api/GetSessionUserName',
 
             data: { userName: userName, password:password }
 

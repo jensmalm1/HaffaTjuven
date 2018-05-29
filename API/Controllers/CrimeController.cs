@@ -93,27 +93,7 @@ namespace API.Controllers
             }
         }
 
-        //[HttpGet("CheckIfUserExists")]
-        //public IActionResult LoggInUser(string userInput)
-        //{
-        //    var user = new User
-        //    {
-        //        UserName = userInput
-        //    };
 
-
-
-        //        var listOfUsers = _context.Users.Select(n=>n.UserName).ToList();
-
-
-        //        if (listOfUsers.Any(x => x.Contains(user.UserName)))
-        //        {
-
-        //            return Ok("funkar");
-        //        }
-
-        //        return Ok("Funkar ej");
-        //}
         private string SessionUserName = "username";
 
         [HttpGet("LogIn")]
@@ -160,17 +140,30 @@ namespace API.Controllers
             return Ok("Session name not set");
 
         }
-        [HttpGet("TestSession")]
-        public IActionResult GetSession()
+        [HttpGet("GetSessionUserName")]
+        public User GetSession()
         {
-            
-            var x =  HttpContext.Session.GetString(SessionUserName);
-            return Ok($"Got Session name {x}");
+            var listOfUserNames = _context.Users.Select(n => n.UserName).ToList();
+            var listOfUsers = _context.Users.ToList();
+            var userName = HttpContext.Session.GetString(SessionUserName);
+
+            var user=listOfUsers.Where(x=>x.UserName==userName)
+
+         
+            (user);
         }
+
+        //[HttpGet("GetSessionUserName")]
+        //public IActionResult GetSession()
+        //{
+
+        //    var userName = HttpContext.Session.GetString(SessionUserName);
+        //    return Ok($"Got Session name {userName}");
+        //}
 
         //public IActionResult EndSession()
         //{
-            
+
         //    HttpContext.Session.Contents.Remove(SessionUserName);
         //    return Ok("Session Ended");
         //}
