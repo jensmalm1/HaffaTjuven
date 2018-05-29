@@ -100,8 +100,8 @@ function GetUserInformation() {
         .done(function (result) {
             console.log(result);
             
-                $("#userId").innerHTML(result.userId);
-                $("#userName").innerHTML(result.userName);
+   
+                $("#userName").text(result);
                 //$("#bounty").val(result.bounty);
                 //$("#information").val(result.information);
             
