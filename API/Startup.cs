@@ -34,8 +34,12 @@ namespace API
                 //options.UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = EfCrime; Trusted_Connection = True; "));
                     options.UseSqlServer($"Server=tcp:sql-haffatjuven-dev.database.windows.net,1433;Initial Catalog=db-haffatjuven;Persist Security Info=False;User ID={username};Password={password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
 
+            services.AddDistributedMemoryCache();
+      
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(1);   
+            });
             services.AddMvc();
-
 
         }
 
@@ -46,11 +50,12 @@ namespace API
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseSession();
             app.UseMvc();
             app.UseStaticFiles();
             app.UseStatusCodePages();
             app.UseDirectoryBrowser();
+
         }
     }
 }

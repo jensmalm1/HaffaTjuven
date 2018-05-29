@@ -39,6 +39,25 @@ $("#addUser").click(function () {
             Password: $('#password').val()
         },
 
+        success: function (result) {
+
+            alert(result);
+
+        }
+    });
+});
+
+$("#logIn").click(function () {
+
+    $.ajax({
+
+        url: "/api/SetSession",
+        method: 'POST',
+        data: {
+            UserName: $('#userName').val(),
+            Password: $('#password').val()
+        },
+
         success: function(result) {
            
             alert(result);
@@ -75,7 +94,7 @@ function getUserInformation() {
     //var password = $("#password").val();
 
     $.ajax({
-            url: '/api/ShowUserInformation',
+            url: '/api/GetSessionUserName',
 
             data: { userName: userName, password:password }
 

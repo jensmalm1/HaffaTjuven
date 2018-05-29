@@ -9,12 +9,7 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <title>HaffaTjuven</title>
 
-    <script src="jquery.js"></script>
-    <script>
-        $(function() {
-            $("#includedMaps").load("maps.html");
-        });
-    </script>
+ 
 </head>
 
 <body>
@@ -34,42 +29,42 @@
     </ul>
 </div>
         
-<div id="mapcontent">
+
 <p>&nbsp;</p>
 
 
 
 <title>Profile</title>
-</head>
 
-<body>
-<div class="container">
-    <h3>Användarinformation</h3>
+
+    <body>
+    <div class="container">
+        <h3>Användarinformation</h3>
+    </div>
+
+    <div class="container">
+
+
+        <!--när man trycker på inloggknappen så visar sig korrekt användarinformation -->
+        <p>
+            <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-log-out"></span> Logga ut
+            </button>
+        </p>
+    
+        Användarnamn: <div id="userName" type="text" value="Användarnamn" style="color: wheat"></div><br/>
+        
+
+        AnvändarId:<div id="userId" type="text" value="id" style="color: wheat"></div> <br />
+
+
+        Bounty:<div id="bounty" type="text" value="0 kronor" style="color: wheat"> </div><br />
+
+        Kommentarer:<div id="information" type="text" style="color: wheat"></div><br />
+    </div>
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="../js/JavaScript.js"></script>
 </div>
-
-<div class="container">
-
-
-<!--när man trycker på inloggknappen så visar sig korrekt användarinformation -->
-<p>
-    <button type="button" class="btn btn-default btn-sm">
-        <span class="glyphicon glyphicon-log-out"></span> Logga ut
-    </button>
-</p>
-    
-    Användarnamn: <div id="userName" type="text" value="Användarnamn" style="color: wheat"></div><br/>
-    AnvändarId:<div id="userId" type="text" value="id" style="color: wheat"></div> <br />
-
-
-    Bounty:<div id="bounty" type="text" value="0 kronor" style="color: wheat"> </div><br />
-
-Kommentarer:<div id="information" type="text" style="color: wheat"></div><br />
-
-
-    
-
-
-
-
-</body>
 </html>

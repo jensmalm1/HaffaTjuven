@@ -4,8 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Data;
 using Domain;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Session;
+using Microsoft.AspNetCore.Http;
 
 namespace API.Controllers
 {
@@ -32,13 +35,22 @@ namespace API.Controllers
         [HttpGet("ShowUsers")]
         public IActionResult GetUsers()
         {
-            return Ok(_context.Users.Include(i => i.Informations).ToList());
+            return Ok(_context.Users.Include(i=>i.Informations).ToList());
         }
 
         [HttpPost("AddUser")]
         public IActionResult AddUser(User user)
         {
+            if (user.UserName == null || user.Password == null)
+            {
+                return BadRequest("Måste ange användarnamn och lösenord");
+            }
 
+            var listOfUserNames = _context.Users.Select(n => n.UserName).ToList();
+            if (listOfUserNames.Contains(user.UserName))
+            {
+                return BadRequest("Användarnamnet finns redan");
+            }
             try
             {
                 _context.Users.Add(user);
@@ -51,41 +63,6 @@ namespace API.Controllers
             }
         }
 
-        [HttpGet("CheckIfUserExists")]
-        public IActionResult LoggInUser(string userInput)
-        {
-
-            var user = new User
-            {
-                UserName = userInput
-            };
-
-            var listOfUsers = new List<string>();
-            try
-            {
-                listOfUsers = _context.Users.Select(n => n.UserName).ToList();
-
-
-                //if (listOfUsers.Contains(u => u, user.UserName))
-                {
-
-                    return Ok("funkar");
-                }
-
-                return Ok("Funkar ej");
-
-            }
-            catch (Exception e)
-            {
-                return Ok(e);
-
-            }
-
-
-
-
-
-        }
 
         [HttpGet("GetProfile")]
 
@@ -117,14 +94,88 @@ namespace API.Controllers
         }
 
 
+        private string SessionUserName = "username";
+
+        [HttpGet("LogIn")]
+        public IActionResult LogIn(string userName, string password)
+        {
+
+            var listOfUsers = _context.Users.Select(n => n.UserName).ToList();
+
+            userName = "Anna";
+
+            //if (listOfUsers.Any(x => x.Contains(userName)))
+            //{
+  
+
+                HttpContext.Session.SetString(SessionUserName, userName);
+                return Ok($"Session username set to {SessionUserName}");
+            //}
+
+            //return Ok("Session name not set");
+
+
+        }
+
+        [HttpPost("SetSession")]
+        public IActionResult SetSession(string userName, string password)
+        {
+
+
+            var listOfUsers = _context.Users.Select(n => n.UserName).ToList();
+
+
+            if (listOfUsers.Any(x => x.Contains(userName)))
+            {
+
+                HttpContext.Session.SetString(SessionUserName, userName);
+
+
+                return Ok($"Session {SessionUserName}={userName}");
+            }
+
+
+         
+
+            return Ok("Session name not set");
+
+        }
+        [HttpGet("GetSessionUserName")]
+        public User GetSession()
+        {
+            var listOfUserNames = _context.Users.Select(n => n.UserName).ToList();
+            var listOfUsers = _context.Users.ToList();
+            var userName = HttpContext.Session.GetString(SessionUserName);
+
+            var user=listOfUsers.Where(x=>x.UserName==userName)
+
+         
+            (user);
+        }
+
+        //[HttpGet("GetSessionUserName")]
+        //public IActionResult GetSession()
+        //{
+
+        //    var userName = HttpContext.Session.GetString(SessionUserName);
+        //    return Ok($"Got Session name {userName}");
+        //}
+
+        //public IActionResult EndSession()
+        //{
+
+        //    HttpContext.Session.Contents.Remove(SessionUserName);
+        //    return Ok("Session Ended");
+        //}
+
 
         [HttpPost("AddInformation")]
         public IActionResult AddInformation(Information information)
         {
             try
             {
-
-                // var user = _context.Users.First();
+               
+               // var user = _context.Users.First();
                 //x => x.Id == information.UserId
                 _context.Informations.Add(information);
                 _context.SaveChanges();
@@ -133,7 +184,7 @@ namespace API.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e);
+                return BadRequest( e);
             }
         }
 

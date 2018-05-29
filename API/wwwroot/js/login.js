@@ -1,19 +1,22 @@
-﻿<? php
+﻿
 
-$user = 'jonny4';
-$pass = 'delafoo';
-
-
-$("#showUsersButton").click(function () {
+$("#logInButton").click(function () {
 
     $.ajax({
-        url: "/api/ShowUsers",
+        url: "/api/SetSession",
 
-        method: 'get',
+
+        data: {
+            UserName: $('#logInUserName').val(),
+            Password: $('#logInPassword').val()
+        },
+
+        method: 'post',
 
         success: function (result) {
 
-            $user.;
+            alert(result);
+
         },
 
         error: function (xhr, status, error) {
@@ -23,27 +26,43 @@ $("#showUsersButton").click(function () {
     });
 });
 
-if (isset($_POST['username']) && isset($_POST['password')) {
 
-    if (($_POST['username'] == $user) && ($_POST['password'] == $pass)) {
+$("#testButton").click(function () {
 
-        if (isset($_POST['rememberme'])) {
-            /* Set cookie to last 1 year */
-            setcookie('username', $_POST['username'], time() + 60 * 60 * 24 * 365, '/account', 'www.example.com');
-            setcookie('password', md5($_POST['password']), time() + 60 * 60 * 24 * 365, '/account', 'www.example.com');
+    $.ajax({
+        url: "/api/TestSession",
 
-        } else {
-            /* Cookie expires when browser closes */
-            setcookie('username', $_POST['username'], false, '/account', 'www.example.com');
-            setcookie('password', md5($_POST['password']), false, '/account', 'www.example.com');
+
+        method: 'get',
+
+        success: function (result) {
+
+            alert(result);
+
+        },
+
+        error: function (xhr, status, error) {
+
+            alert("Fel i sessionusername");
         }
-        header('Location: index.php');
+    });
+});
 
-    } else {
-        echo 'Username/Password Invalid';
-    }
+    
+//if (isset($_POST['username']) && isset($_POST['password')) {
 
-} else {
-    echo 'You must supply a username and password.';
-}
-?>
+//    if (($_POST['username'] == $user) && ($_POST['password'] == $pass)) {
+
+//            setcookie('username', $_POST['username'], false, '/account', 'www.example.com');
+//            setcookie('password', md5($_POST['password']), false, '/account', 'www.example.com');
+//    }
+//        header('Location: index.php');
+
+//    } else {
+//        echo 'Username/Password Invalid';
+//    }
+
+//} else {
+//    echo 'You must supply a username and password.';
+//}
+//?>
