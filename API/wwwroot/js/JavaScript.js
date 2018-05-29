@@ -89,12 +89,12 @@ $("#showUsersButton").click(function () {
     });
 });
 
-function getUserInformation() {
+function GetUserInformation() {
     var userName = $("#userName").val();
     //var password = $("#password").val();
 
     $.ajax({
-            url: '/api/GetSessionUserName',
+            url: '/api/GetSessionUser',
 
             data: { userName: userName, password:password }
 
@@ -103,9 +103,9 @@ function getUserInformation() {
             console.log(result);
             
                 $("#userId").val(result.userId);
-                $("#userName").val(result.name);
-                $("#bounty").val(result.bounty);
-                $("#information").val(result.information);
+                $("#userName").val(result.userName);
+                //$("#bounty").val(result.bounty);
+                //$("#information").val(result.information);
             
 
         })

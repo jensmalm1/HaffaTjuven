@@ -140,17 +140,16 @@ namespace API.Controllers
             return Ok("Session name not set");
 
         }
-        [HttpGet("GetSessionUserName")]
+        [HttpGet("GetSessionUser")]
         public User GetSession()
         {
-            var listOfUserNames = _context.Users.Select(n => n.UserName).ToList();
             var listOfUsers = _context.Users.ToList();
             var userName = HttpContext.Session.GetString(SessionUserName);
 
-            var user=listOfUsers.Where(x=>x.UserName==userName)
+            var user = listOfUsers.FirstOrDefault(x => x.UserName == userName);
 
-         
-            (user);
+
+            return user;
         }
 
         //[HttpGet("GetSessionUserName")]
