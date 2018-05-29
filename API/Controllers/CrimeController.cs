@@ -84,10 +84,38 @@ namespace API.Controllers
 
 
 
-            //User getUser;
-            //getUser = _context.Users.Single(u => u.UserName == user.UserName);
-            //return Ok(getUser);
+
         }
+
+        [HttpGet("GetProfile")]
+
+        public IActionResult GetProfile(User user)
+        {
+
+            var getUser = _context.Users.Single(u => u.UserName == user.UserName);
+            return Ok(getUser);
+
+        }
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                var removeUser = _context.Users.SingleOrDefault(u => u.Id == id);
+
+                if (removeUser == null)
+                    return NotFound();
+
+                _context.Users.Remove(removeUser);
+                _context.SaveChanges();
+                return Ok("Användaren är borttagen");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
+        }
+
 
 
         [HttpPost("AddInformation")]
