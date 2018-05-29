@@ -38,7 +38,16 @@ namespace API.Controllers
         [HttpPost("AddUser")]
         public IActionResult AddUser(User user)
         {
+            if (user.UserName == null||user.Password==null)
+            {
+                return BadRequest("Måste ange användarnamn och lösenord");
+            }
 
+            var listOfUserNames = _context.Users.Select(n => n.UserName).ToList();
+            if (listOfUserNames.Contains(user.UserName))
+            {
+                return BadRequest("Användarnamnet finns redan");
+            }
             try
             {
                 _context.Users.Add(user);
