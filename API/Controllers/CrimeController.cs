@@ -148,6 +148,18 @@ namespace API.Controllers
             return Ok(userName);
         }
 
+        [HttpGet("GetSessionInformation")]
+        public IActionResult GetSessionInformation()
+        {
+            var name = GetSessionUser().ToString();
+            var information = _context.Users.Where(i => i.UserName == name).Include(i=>i.Informations);
+           
+            return Ok(information);
+            //return Ok(information.Select(i => i.Informations));
+
+
+        }
+
         //[HttpGet("GetSessionUserName")]
         //public IActionResult GetSession()
         //{

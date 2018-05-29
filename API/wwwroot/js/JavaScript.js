@@ -109,7 +109,28 @@ function GetUserInformation() {
         })
         .fail(function (xhr, status, error) {
 
-            alert("Går att hämta användarinformationen");
+            alert("Går inte att hämta användarinformationen");
+        });
+}
+function GetInformation() {
+
+    $.ajax({
+            url: '/api/GetSessionInformation'
+
+        })
+        .done(function (result) {
+            console.log(result);
+
+
+            $("#information").list(result);
+            //$("#bounty").val(result.bounty);
+            //$("#information").val(result.information);
+
+
+        })
+        .fail(function (xhr, status, error) {
+
+            alert("Går inte att hämta informationen");
         });
 }
 
