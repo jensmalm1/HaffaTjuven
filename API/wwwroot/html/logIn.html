@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <title>HaffaTjuven</title>
 
-    <script src="jquery.js"></script>
     <script>
         $(function() {
             $("#includedMaps").load("maps.html");
@@ -42,26 +41,48 @@
     <input type="submit" name="submit" value="Login!">
 </form>-->
     
-<div id="mapcontent">
-<p>&nbsp;</p>
-<h3>Logga in</h3>
-  
-Användarnamn:<br />
-<input id="logInUserName" method="post" style="width: 50%" action="login.php"/><br />
-<br />
-Password:<br />
-<input id="password" type="password" value="" type="password" style="width: 50%" /><br />
-<br />
-Remember Me: <input type="checkbox" name="rememberme" value="1"><br>
+    <div id="mapcontent">
+        <p>&nbsp;</p>
+        <h3>Logga in</h3>
+        <div/>
+        Användarnamn:<br />
+        <input id="logInUserName" value="" style="width: 50%" /><br />
+        <br />
+        Password:<br />
+        <input id="logInPassword" type="password" value="" type="password" style="width: 50%" /><br />
+        <br />
+        <!--Remember Me: <input type="checkbox" name="rememberme" value="1"><br>-->
 
-<button id="addUser">Logga in!</button>
+        <button id="logInButton">Logga in!</button>
 
         
+    
+        <p>&nbsp;</p>
+    </div>
+    
+    
+    
+    <div id="mapcontent">
+        <p>&nbsp;</p>
+        <h3>Logga in</h3>
+        <div/>
 
-<p>&nbsp;</p>
+        <!--Remember Me: <input type="checkbox" name="rememberme" value="1"><br>-->
 
-<div/>
+        <button id="testButton">Testa om det finns en session!</button>
 
+        
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="../js/login.js"></script>
+        <p>&nbsp;</p>
+    </div>
+    
+    
+    
+    
+    
+
+</div>
 
 
 </body>

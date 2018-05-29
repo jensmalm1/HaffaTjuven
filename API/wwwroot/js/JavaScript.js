@@ -28,11 +28,11 @@ $("#addInformation").click(function () {
     });
 });
 
-$("#addUser").click(function () {
+$("#logIn").click(function () {
 
     $.ajax({
 
-        url: "/api/AddUser",
+        url: "/api/SetSession",
         method: 'POST',
         data: {
             UserName: $('#userName').val(),

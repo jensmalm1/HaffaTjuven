@@ -4,8 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Data;
 using Domain;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Session;
+using Microsoft.AspNetCore.Http;
 
 namespace API.Controllers
 {
@@ -51,43 +54,87 @@ namespace API.Controllers
             }
         }
 
-        [HttpGet("CheckIfUserExists")]
-        public IActionResult LoggInUser(string userInput)
+        //[HttpGet("CheckIfUserExists")]
+        //public IActionResult LoggInUser(string userInput)
+        //{
+        //    var user = new User
+        //    {
+        //        UserName = userInput
+        //    };
+
+
+
+        //        var listOfUsers = _context.Users.Select(n=>n.UserName).ToList();
+
+
+        //        if (listOfUsers.Any(x => x.Contains(user.UserName)))
+        //        {
+
+        //            return Ok("funkar");
+        //        }
+
+        //        return Ok("Funkar ej");
+        //}
+        private string SessionUserName = "username";
+
+        [HttpGet("LogIn")]
+        public IActionResult LogIn(string userName, string password)
         {
 
-            var user = new User
-            {
-                UserName = userInput
-            };
+            var listOfUsers = _context.Users.Select(n => n.UserName).ToList();
 
-            var listOfUsers = new List<string>();
-            try
-            {
-                listOfUsers = _context.Users.Select(n=>n.UserName).ToList();
-        
-             
-                if (listOfUsers.Contains(u=>u,user.UserName))
-                {
+            userName = "Anna";
 
-                    return Ok("funkar");
-                }
+            //if (listOfUsers.Any(x => x.Contains(userName)))
+            //{
+  
 
-                return Ok("Funkar ej");
+                HttpContext.Session.SetString(SessionUserName, userName);
+                return Ok($"Session username set to {SessionUserName}");
+            //}
 
-            }
-            catch (Exception e)
-            {
-                return Ok(e);
-
-            }
-           
+            //return Ok("Session name not set");
 
 
-
-            //User getUser;
-            //getUser = _context.Users.Single(u => u.UserName == user.UserName);
-            //return Ok(getUser);
         }
+
+        [HttpPost("SetSession")]
+        public IActionResult SetSession(string userName, string password)
+        {
+
+
+            var listOfUsers = _context.Users.Select(n => n.UserName).ToList();
+
+
+            if (listOfUsers.Any(x => x.Contains(userName)))
+            {
+
+                HttpContext.Session.SetString(SessionUserName, userName);
+
+
+                return Ok($"Session {SessionUserName}={userName}");
+            }
+
+
+         
+
+            return Ok("Session name not set");
+
+        }
+        [HttpGet("TestSession")]
+        public IActionResult GetSession()
+        {
+            
+            var x =  HttpContext.Session.GetString(SessionUserName);
+            return Ok($"Got Session name {x}");
+        }
+
+        //public IActionResult EndSession()
+        //{
+            
+        //    HttpContext.Session.Contents.Remove(SessionUserName);
+        //    return Ok("Session Ended");
+        //}
 
 
         [HttpPost("AddInformation")]
