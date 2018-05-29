@@ -16,6 +16,9 @@
             height: 400px;
             width: 100%;
         }
+        #dropdownMenuButton {
+            margin-top: 5px;
+        }
     </style>
 
 </head>
@@ -250,14 +253,13 @@
                 <script async defer
                         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMRHku3oWIeSD-MbMBC8M6yJt2wU_T5c0&callback=initMap">
                 </script>
-                <div id="crimeInfo">
-                </div>
-
+                
 
                 <script>
                     var filterUrl = "https://brottsplatskartan.se/api/events/?app=haffatjuven";
                 </script>
-
+                
+            
             <div class="btn-group dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Filtrera brott
@@ -267,7 +269,7 @@
                     <a class="dropdown-item" onclick="changeFilterUrl('brand')">Brand</a>
                     <a class="dropdown-item" onclick="changeFilterUrl('Misshandel')">Misshandel</a>
                     <a class="dropdown-item" onclick="changeFilterUrl('Fylleri/LOB')">Fylleri/LOB</a>
-                    <a class="dropdown-item" onclick="changeFilterUrl('Mord')">Mord</a>
+                    <a class="dropdown-item" onclick="changeFilterUrl('Mord/dråp')">Mord/dråp</a>
                 </div>
             </div>
             
@@ -276,8 +278,29 @@
                     Region
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Göteborg')">Göteborg</a>
-                    
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Blekinge län')">Blekinge län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Dalarnas län')">Dalarnas län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Gotlands län')">Gotlands län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Gävleborgs län')">Gävleborgs län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Hallands län')">Hallands län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Jämtlands län')">Jämtlands län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Jönköpings län')">Jönköpings län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Kalmar län')">Kalmar län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Kronobergs län')">Kronobergs län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Norrbottens län')">Norrbottens län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Skåne län')">Skåne län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Stockholms län')">Stockholms län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Södermanlands län')">Södermanlands län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Uppsala län')">Uppsala län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Värmlands län')">Värmlands län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Västerbottens län')">Västerbottens län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Västernorrlands län')">Västernorrlands län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Västmanlands län')">Västmanlands län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Västra Götalands län')">Västra Götalands län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Örebro län')">Örebro län</a>
+                    <a class="dropdown-item" onclick="changeFilterLocationUrl('Östergötlands län')">Östergötlands län</a>
+
+
                 </div>
             </div>
                 
@@ -310,12 +333,12 @@
                         });
                     }
 
-                function changeFilterLocationUrl(location) {
+                function changeFilterLocationUrl(area) {
                     for (var i = 0; i < markers.length; i++) {
                         markers[i].setMap(null);
                     }
 
-                    filterUrl = "https://brottsplatskartan.se/api/events/?app=haffatjuven&location=" + location;
+                    filterUrl = "https://brottsplatskartan.se/api/events/?app=haffatjuven&area=" + area;
 
                     $.ajax({
                         url: filterUrl,
@@ -337,6 +360,8 @@
                 </script>
 
 
+            <div id="crimeInfo">
+            </div>
 
 
 
