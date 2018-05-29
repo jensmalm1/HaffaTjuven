@@ -89,21 +89,19 @@ $("#showUsersButton").click(function () {
     });
 });
 
+
+
 function GetUserInformation() {
-    var userName = $("#userName").val();
-    //var password = $("#password").val();
 
     $.ajax({
-            url: '/api/GetSessionUser',
-
-            data: { userName: userName, password:password }
+            url: '/api/GetSessionUser'
 
         })
         .done(function (result) {
             console.log(result);
             
-                $("#userId").val(result.userId);
-                $("#userName").val(result.userName);
+                $("#userId").innerHTML(result.userId);
+                $("#userName").innerHTML(result.userName);
                 //$("#bounty").val(result.bounty);
                 //$("#information").val(result.information);
             

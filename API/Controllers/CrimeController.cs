@@ -94,7 +94,7 @@ namespace API.Controllers
         }
 
 
-        private string SessionUserName = "username";
+        public string SessionUserName = "username";
 
         [HttpGet("LogIn")]
         public IActionResult LogIn(string userName, string password)
@@ -141,15 +141,11 @@ namespace API.Controllers
 
         }
         [HttpGet("GetSessionUser")]
-        public User GetSession()
+        public IActionResult GetSessionUser()
         {
-            var listOfUsers = _context.Users.ToList();
             var userName = HttpContext.Session.GetString(SessionUserName);
 
-            var user = listOfUsers.FirstOrDefault(x => x.UserName == userName);
-
-
-            return user;
+            return Ok(userName);
         }
 
         //[HttpGet("GetSessionUserName")]
