@@ -28,6 +28,25 @@ $("#addInformation").click(function () {
     });
 });
 
+$("#addUser").click(function () {
+
+    $.ajax({
+
+        url: "/api/AddUser",
+        method: 'POST',
+        data: {
+            UserName: $('#userName').val(),
+            Password: $('#password').val()
+        },
+
+        success: function (result) {
+
+            alert(result);
+
+        }
+    });
+});
+
 $("#logIn").click(function () {
 
     $.ajax({

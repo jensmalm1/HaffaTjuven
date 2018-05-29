@@ -41,12 +41,51 @@ namespace API.Controllers
         [HttpPost("AddUser")]
         public IActionResult AddUser(User user)
         {
+            if (user.UserName == null || user.Password == null)
+            {
+                return BadRequest("Måste ange användarnamn och lösenord");
+            }
 
+            var listOfUserNames = _context.Users.Select(n => n.UserName).ToList();
+            if (listOfUserNames.Contains(user.UserName))
+            {
+                return BadRequest("Användarnamnet finns redan");
+            }
             try
             {
                 _context.Users.Add(user);
                 _context.SaveChanges();
                 return Ok($"Användare {user.UserName} tillagd med ID {user.Id}");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
+        }
+
+
+        [HttpGet("GetProfile")]
+
+        public IActionResult GetProfile(User user)
+        {
+
+            var getUser = _context.Users.Single(u => u.UserName == user.UserName);
+            return Ok(getUser);
+
+        }
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                var removeUser = _context.Users.SingleOrDefault(u => u.Id == id);
+
+                if (removeUser == null)
+                    return NotFound();
+
+                _context.Users.Remove(removeUser);
+                _context.SaveChanges();
+                return Ok("Användaren är borttagen");
             }
             catch (Exception e)
             {
