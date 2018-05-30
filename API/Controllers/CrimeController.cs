@@ -103,20 +103,25 @@ namespace API.Controllers
         {
 
                 
-            var listOfUserNames = _context.Users.Select(n => n.UserName).ToList();
-            var listOfUsers = _context.Users.Where(n => n.UserName == userName).ToList();
-            var correctPass = listOfUsers.FirstOrDefault(x => x.UserName == userName).Password;
+            var listOfUserNames = _context.Users.Select(x => x.UserName).ToList();
 
-            if (!listOfUserNames.Any(x => x.Contains(userName)))
+
+            if (!listOfUserNames.Contains(userName))
             {
-                return Ok("Username  is incorrect");
+                return Ok("Username is incorrect");
             }
+
+            var user = _context.Users.FirstOrDefault(x => x.UserName == userName);
+            //var listOfUsers = _context.Users.Where(x => x.UserName == userName).ToList();
+            //var listOfUsers = _context.Users.ToList();
+
+            var correctPass = user.Password;
+            //var correctPass = listOfUsers.FirstOrDefault(x => x.UserName == userName).Password;
 
             if (password!=correctPass)
             {
                 return Ok("Password incorrect");
             }
-
             
                HttpContext.Session.SetString(SessionUserName, userName);
                 return Ok($"Session {SessionUserName}={userName}");
