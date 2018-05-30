@@ -104,7 +104,8 @@ function GetUserInformation() {
                 $("#userName").text(result);
                 //$("#bounty").val(result.bounty);
                 //$("#information").val(result.information);
-            
+            GetInformation();
+
 
         })
         .fail(function (xhr, status, error) {

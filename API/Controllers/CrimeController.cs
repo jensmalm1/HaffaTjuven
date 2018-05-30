@@ -136,12 +136,11 @@ namespace API.Controllers
         [HttpGet("GetSessionInformation")]
         public IActionResult GetSessionInformation()
         {
-            var name = GetSessionUser().ToString();
-            var information = _context.Users.Where(i => i.UserName == name).SelectMany(i => i.Informations).ToList();
+            var userName = HttpContext.Session.GetString(SessionUserName);
+            var information = _context.Users.Where(i => i.UserName == userName).SelectMany(i => i.Informations).ToList();
 
 
-            //return Ok(information);
-            //Alt
+            
             var listOfInformation = new List<string>();
             foreach (var info in information)
             {
