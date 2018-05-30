@@ -47,7 +47,7 @@
 
         <!--när man trycker på inloggknappen så visar sig korrekt användarinformation -->
         <p>
-            <a href="http://localhost:8116/html/login.html">
+            <a href="../html/index.html">
             <button id="logOutButton"  class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-log-out"></span> Logga ut!
             </button>
@@ -56,16 +56,16 @@
 
 
 
-        Användarnamn: <div id="userName" type="text" style="color: wheat"></div><br/>
+        Användarnamn: <div id="userName" type="text" ></div><br/>
  
 
 
-        AnvändarId:<div id="userId" type="text" style="color: wheat"></div> <br />
+        AnvändarId:<div id="userId" type="text" ></div> <br />
 
 
        <!-- Bounty:<div id="bounty" type="text" value="0 kronor" style="color: wheat"> </div><br />-->
 
-        Kommentarer:<div id="information" type="text" style="color: wheat"></div><br />
+        Kommentarer:<table id="information" ></table><br />
     </div>
     </body>
 
@@ -74,7 +74,7 @@
     
     <script>
         GetUserInformation();
-        GetInformation();
+        //GetInformation();
     </script>
     
 </div>
