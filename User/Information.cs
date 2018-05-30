@@ -14,6 +14,7 @@ namespace Domain
         public int UserId { get; set; }
         public string Content { get; set; }
         public int CrimeId { get; set; }
+        public int Likes { get; set; }
         
     }
 }

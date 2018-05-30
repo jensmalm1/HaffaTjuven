@@ -128,8 +128,9 @@ namespace API.Controllers
         {
 
             var userName = HttpContext.Session.GetString(SessionUserName);
-            //if(userName=="")
-            return Ok(userName);
+            if (userName == null)
+                return Ok("Ej Inloggad");
+                return Ok(userName);
 
         }
 
