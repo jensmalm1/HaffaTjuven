@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "User\Domain.cspro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{3F1AC272-127B-4555-A99E-2DA53A5B6B1D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidateUserName.Test", "ValidateUserName.Test\ValidateUserName.Test.csproj", "{D081280B-8048-44D6-9B98-6C046363DE69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3F1AC272-127B-4555-A99E-2DA53A5B6B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F1AC272-127B-4555-A99E-2DA53A5B6B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F1AC272-127B-4555-A99E-2DA53A5B6B1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D081280B-8048-44D6-9B98-6C046363DE69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D081280B-8048-44D6-9B98-6C046363DE69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D081280B-8048-44D6-9B98-6C046363DE69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D081280B-8048-44D6-9B98-6C046363DE69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
