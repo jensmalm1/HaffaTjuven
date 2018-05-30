@@ -129,5 +129,30 @@ function GetInformation() {
 
             alert("Går inte att hämta informationen");
         });
+
 }
 
+
+$("#logOutButton").click(function () {
+
+    $.ajax({
+        url: "/api/EndSession",
+
+        data:{
+
+    },
+
+        method: 'post',
+
+        success: function (result) {
+
+            alert(result);
+
+        },
+
+        error: function (xhr, status, error) {
+
+            alert(result);
+        }
+    });
+});

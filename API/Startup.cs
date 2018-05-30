@@ -37,7 +37,7 @@ namespace API
             services.AddDistributedMemoryCache();
       
             services.AddSession(options => {
-                options.IdleTimeout = TimeSpan.FromMinutes(40);   
+                options.IdleTimeout = TimeSpan.FromMinutes(1);   
             });
             services.AddMvc();
 

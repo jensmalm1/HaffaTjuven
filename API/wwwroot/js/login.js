@@ -21,7 +21,7 @@ $("#logInButton").click(function () {
 
         error: function (xhr, status, error) {
 
-            alert("Nu blev det fel");
+            alert(result);
         }
     });
 });
