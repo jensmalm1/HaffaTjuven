@@ -1,6 +1,6 @@
 /* A Free Design by Bryant Smith (bryantsmith.com) */
 
-
+/*
 
 body {
     margin: 0;
@@ -52,12 +52,11 @@ left:100px;
 top:150px;
 }
 
-#mainpic
-{
-background-image:url(images/main.jpg);
-background-repeat:no-repeat;
-width:900px;
-height:402px;	
+#mainpic {
+    background-image: url(images/main.jpg);
+    background-repeat: no-repeat;
+    width: 900px;
+    height: 402px;
 }
 
 
@@ -151,3 +150,6 @@ html, body {
 text-align: center;
 }
 p {text-align: left;}
+
+
+    */

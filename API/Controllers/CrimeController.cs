@@ -136,11 +136,19 @@ namespace API.Controllers
         [HttpGet("GetSessionInformation")]
         public IActionResult GetSessionInformation()
         {
-            var name = GetSessionUser().ToString();
-            var information = _context.Users.Where(i => i.UserName == name).Include(i=>i.Informations);
+            var userName = HttpContext.Session.GetString(SessionUserName);
+            var information = _context.Users.Where(i => i.UserName == userName).SelectMany(i => i.Informations).ToList();
 
-            //return Ok(information);
-            return Ok(information.Select(i => i.Informations).ToString());
+
+            
+            var listOfInformation = new List<string>();
+            foreach (var info in information)
+            {
+
+                listOfInformation.Add($"<tr><td>{info.Content}</td></tr>");
+
+            }
+            return Ok(listOfInformation);
 
         }
         [HttpPost("EndSession")]
