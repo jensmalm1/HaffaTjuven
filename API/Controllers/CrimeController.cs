@@ -95,7 +95,7 @@ namespace API.Controllers
 
 
         public string SessionUserName = "username";
-
+        
      
 
         [HttpPost("SetSession")]
@@ -118,7 +118,7 @@ namespace API.Controllers
             }
 
             
-                HttpContext.Session.SetString(SessionUserName, userName);
+               HttpContext.Session.SetString(SessionUserName, userName);
                 return Ok($"Session {SessionUserName}={userName}");
 
         }
