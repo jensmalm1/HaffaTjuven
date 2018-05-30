@@ -10,7 +10,7 @@ $("#addInformation").click(function () {
         data: {
             UserId: $('#userId').val(),
             Content: $('#content').val(),
-            CrimeId:$('#crimeId').val()
+            CrimeId: $('#crimeId').val()
         },
 
         success: function (result) {
@@ -58,14 +58,15 @@ $("#logIn").click(function () {
             Password: $('#password').val()
         },
 
-        success: function(result) {
+        success: function (result) {
            
-            alert(result);
-            
-        }
-        
 
-        
+            alert(result);
+
+        }
+
+
+
     });
 });
 
@@ -94,16 +95,16 @@ $("#showUsersButton").click(function () {
 function GetUserInformation() {
 
     $.ajax({
-            url: '/api/GetSessionUser'
+        url: '/api/GetSessionUser'
 
-        })
+    })
         .done(function (result) {
             console.log(result);
-            
-   
-                $("#userName").text(result);
-                //$("#bounty").val(result.bounty);
-                //$("#information").val(result.information);
+
+
+            $("#userName").text(result);
+            //$("#bounty").val(result.bounty);
+            //$("#information").val(result.information);
             GetInformation();
 
 
@@ -116,13 +117,13 @@ function GetUserInformation() {
 function GetInformation() {
 
     $.ajax({
-            url: '/api/GetSessionInformation'
+        url: '/api/GetSessionInformation'
 
-        })
+    })
         .done(function (result) {
-            
+
             $("#information").html(result);
-            
+
 
 
         })
@@ -139,9 +140,9 @@ $("#logOutButton").click(function () {
     $.ajax({
         url: "/api/EndSession",
 
-        data:{
+        data: {
 
-    },
+        },
 
         method: 'post',
 
@@ -158,21 +159,21 @@ $("#logOutButton").click(function () {
     });
 });
 
-function CheckIfLoggedIn() {
+//function CheckIfLoggedIn() {
 
-    $.ajax({
-            url: '/api/GetSessionUser'
+//    $.ajax({
+//        url: '/api/GetSessionUser'
 
-        })
-        .done(function (result) {
-            console.log(result);
-            if (result !== "Ej inloggad")
-                $("#inlog").hidden();
-            alert(result);
+//    })
+//        .done(function (result) {
+//            console.log(result);
+//            if (result !== "Ej inloggad")
+//                $("#inlog").hidden();
+//            alert(result);
 
-        })
-        .fail(function (xhr, status, error) {
+//        })
+//        .fail(function (xhr, status, error) {
 
-            alert("Sessionsfel");
-        });
-}
+//            alert("Sessionsfel");
+//        });
+//}

@@ -5,11 +5,11 @@ namespace ValidateUserName.Test
     [TestClass]
     public class ValidateUserName
     {
-        //User
+        //User user=
         [TestMethod]
         public void WhenAddingANewUserAndNameIsNull_ExcpectedBadRequestMsg()
         {
-            Assert.AreEqual(user.UserName, "Anna");
+         //   Assert.AreEqual(user.UserName, "Anna");
            
 
         }
