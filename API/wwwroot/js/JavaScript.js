@@ -99,12 +99,11 @@ function GetUserInformation() {
 
     })
         .done(function (result) {
-            console.log(result);
+            
 
 
             $("#userName").text(result);
-            //$("#bounty").val(result.bounty);
-            //$("#information").val(result.information);
+
             GetInformation();
 
 
