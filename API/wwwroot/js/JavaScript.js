@@ -166,7 +166,7 @@ $("#logOutButton").click(function () {
 //    })
 //        .done(function (result) {
 //            console.log(result);
-//            if (result !== "Ej inloggad")
+//            if (result !== null)
 //                $("#inlog").hidden();
 //            alert(result);
 
