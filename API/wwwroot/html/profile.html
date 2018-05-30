@@ -47,22 +47,23 @@
 
         <!--när man trycker på inloggknappen så visar sig korrekt användarinformation -->
         <p>
-            <button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-log-out"></span> Logga ut
+            <a href="http://localhost:8116/html/login.html">
+            <button id="logOutButton"  class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-log-out"></span> Logga ut!
             </button>
+            </a>
         </p>
 
 
 
-        Användarnamn: <div id="userName" type="text" value="Användarnamn" style="color: wheat"></div><br/>
-        <script>
-            GetUserInformation();
-        </script>
-
-        AnvändarId:<div id="userId" type="text" value="id" style="color: wheat"></div> <br />
+        Användarnamn: <div id="userName" type="text" style="color: wheat"></div><br/>
+ 
 
 
-        Bounty:<div id="bounty" type="text" value="0 kronor" style="color: wheat"> </div><br />
+        AnvändarId:<div id="userId" type="text" style="color: wheat"></div> <br />
+
+
+       <!-- Bounty:<div id="bounty" type="text" value="0 kronor" style="color: wheat"> </div><br />-->
 
         Kommentarer:<div id="information" type="text" style="color: wheat"></div><br />
     </div>
@@ -70,5 +71,11 @@
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="../js/JavaScript.js"></script>
+    
+    <script>
+        GetUserInformation();
+        GetInformation();
+    </script>
+    
 </div>
 </html>

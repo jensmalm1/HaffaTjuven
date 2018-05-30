@@ -89,21 +89,19 @@ $("#showUsersButton").click(function () {
     });
 });
 
+
+
 function GetUserInformation() {
-    var userName = $("#userName").val();
-    //var password = $("#password").val();
 
     $.ajax({
-            url: '/api/GetSessionUser',
-
-            data: { userName: userName, password:password }
+            url: '/api/GetSessionUser'
 
         })
         .done(function (result) {
             console.log(result);
             
-                $("#userId").val(result.userId);
-                $("#userName").val(result.userName);
+   
+                $("#userName").text(result);
                 //$("#bounty").val(result.bounty);
                 //$("#information").val(result.information);
             
@@ -111,7 +109,53 @@ function GetUserInformation() {
         })
         .fail(function (xhr, status, error) {
 
-            alert("Går att hämta användarinformationen");
+            alert("Går inte att hämta användarinformationen");
         });
 }
+function GetInformation() {
 
+    $.ajax({
+            url: '/api/GetSessionInformation'
+
+        })
+        .done(function (result) {
+            console.log(result);
+
+
+            $("#information").text(result);
+            //$("#bounty").val(result.bounty);
+            //$("#information").val(result.information);
+
+
+        })
+        .fail(function (xhr, status, error) {
+
+            alert("Går inte att hämta informationen");
+        });
+
+}
+
+
+$("#logOutButton").click(function () {
+
+    $.ajax({
+        url: "/api/EndSession",
+
+        data:{
+
+    },
+
+        method: 'post',
+
+        success: function (result) {
+
+            alert(result);
+
+        },
+
+        error: function (xhr, status, error) {
+
+            alert(result);
+        }
+    });
+});

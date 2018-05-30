@@ -94,62 +94,61 @@ namespace API.Controllers
         }
 
 
-        private string SessionUserName = "username";
+        public string SessionUserName = "username";
 
-        [HttpGet("LogIn")]
-        public IActionResult LogIn(string userName, string password)
-        {
-
-            var listOfUsers = _context.Users.Select(n => n.UserName).ToList();
-
-            userName = "Anna";
-
-            //if (listOfUsers.Any(x => x.Contains(userName)))
-            //{
-  
-
-                HttpContext.Session.SetString(SessionUserName, userName);
-                return Ok($"Session username set to {SessionUserName}");
-            //}
-
-            //return Ok("Session name not set");
-
-
-        }
+     
 
         [HttpPost("SetSession")]
         public IActionResult SetSession(string userName, string password)
         {
 
+                
+            var listOfUserNames = _context.Users.Select(n => n.UserName).ToList();
+            var listOfUsers = _context.Users.Where(n => n.UserName == userName).ToList();
+            var correctPass = listOfUsers.FirstOrDefault(x => x.UserName == userName).Password;
 
-            var listOfUsers = _context.Users.Select(n => n.UserName).ToList();
-
-
-            if (listOfUsers.Any(x => x.Contains(userName)))
+            if (!listOfUserNames.Any(x => x.Contains(userName)))
             {
-
-                HttpContext.Session.SetString(SessionUserName, userName);
-
-
-                return Ok($"Session {SessionUserName}={userName}");
+                return Ok("Username  is incorrect");
             }
 
+            if (password!=correctPass)
+            {
+                return Ok("Password incorrect");
+            }
 
-         
-
-            return Ok("Session name not set");
+            
+                HttpContext.Session.SetString(SessionUserName, userName);
+                return Ok($"Session {SessionUserName}={userName}");
 
         }
+
         [HttpGet("GetSessionUser")]
-        public User GetSession()
+        public IActionResult GetSessionUser()
         {
-            var listOfUsers = _context.Users.ToList();
+
             var userName = HttpContext.Session.GetString(SessionUserName);
+            //if(userName=="")
+            return Ok(userName);
 
-            var user = listOfUsers.FirstOrDefault(x => x.UserName == userName);
+        }
 
+        [HttpGet("GetSessionInformation")]
+        public IActionResult GetSessionInformation()
+        {
+            var name = GetSessionUser().ToString();
+            var information = _context.Users.Where(i => i.UserName == name).Include(i=>i.Informations);
 
-            return user;
+            //return Ok(information);
+            return Ok(information.Select(i => i.Informations).ToString());
+
+        }
+        [HttpPost("EndSession")]
+        public IActionResult EndSession()
+        {
+            HttpContext.Session.Clear();
+            return Ok($"Session ended");
+
         }
 
         //[HttpGet("GetSessionUserName")]
