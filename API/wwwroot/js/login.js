@@ -15,8 +15,9 @@ $("#logInButton").click(function () {
 
         success: function (result) {
 
-            alert(result);
 
+            alert(result);
+            
         },
 
         error: function (xhr, status, error) {
