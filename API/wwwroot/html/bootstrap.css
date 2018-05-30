@@ -65,9 +65,9 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #212529;
+    color: #666666;
     text-align: left;
-    background-color: black
+    background-color: black;
 }
 
 [tabindex="-1"]:focus {
@@ -81,7 +81,7 @@ hr {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    margin-top: 0;
+    margin-top: 20px;
     margin-bottom: .5rem
 }
 
@@ -8941,6 +8941,10 @@ a.text-light:focus, a.text-light:hover {
 
 .text-dark {
     color: #343a40 !important
+}
+
+.text-tjuven {
+    color: #ff5522 !important
 }
 
 a.text-dark:focus, a.text-dark:hover {
