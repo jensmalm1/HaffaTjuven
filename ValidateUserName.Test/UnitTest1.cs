@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.ComTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ValidateUserName.Test
@@ -5,12 +6,13 @@ namespace ValidateUserName.Test
     [TestClass]
     public class ValidateUserName
     {
-        //User user=
+         
         [TestMethod]
         public void WhenAddingANewUserAndNameIsNull_ExcpectedBadRequestMsg()
         {
-         //   Assert.AreEqual(user.UserName, "Anna");
-           
+            //var user = new User { };
+            //   Assert.AreEqual(user.UserName, "Anna");
+
 
         }
     }
