@@ -157,3 +157,22 @@ $("#logOutButton").click(function () {
         }
     });
 });
+
+function CheckIfLoggedIn() {
+
+    $.ajax({
+            url: '/api/GetSessionUser'
+
+        })
+        .done(function (result) {
+            console.log(result);
+            if (result !== "Ej inloggad")
+                $("#inlog").hidden();
+            alert(result);
+
+        })
+        .fail(function (xhr, status, error) {
+
+            alert("Sessionsfel");
+        });
+}
