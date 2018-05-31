@@ -128,14 +128,12 @@ function GetInformation() {
 }
 
 function GetCommentsFromId() {
-    alert("A");
 
     $.ajax({
         url: '/api/GetCommentsFromId',
-        data: { CrimeId: $('#crimeId').val() },
+        data: { CrimeId: $('#crimeId').val() }
         })
         .done(function (result) {
-            alert("B"),
 
             $("#commentsFromId").html(result);
 
