@@ -164,7 +164,7 @@ namespace API.Controllers
         {
             HttpContext.Session.Clear();
             return Content(
-                "<html>Session ended. <script>setTimeout(function () { window.location.href = \"../html/index.html\"; },2000);</script></html>", "text/html");
+                "<html>Loggar ut... <script>setTimeout(function () { window.location.href = \"../html/index.html\"; },2000);</script></html>", "text/html");
 
         }
 

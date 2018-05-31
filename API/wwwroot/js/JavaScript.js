@@ -146,9 +146,6 @@ $("#logOutButton").click(function () { //ANVÄDS EJ
 
         success: function (result) {
 
-            
-
-
         },
 
         error: function (xhr, status, error) {
@@ -169,7 +166,6 @@ function CheckIfLoggedIn(callback) {
             }
         })
         .fail(function () {
-            alert("fail!");
         });
 
 }
