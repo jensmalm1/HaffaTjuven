@@ -100,11 +100,11 @@ function GetUserInformation() {
     })
         .done(function (result) {
             
-
+            GetInformation();
 
             $("#userName").text(result);
 
-            GetInformation();
+           
 
 
         })
