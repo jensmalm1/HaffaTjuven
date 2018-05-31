@@ -26,6 +26,10 @@ namespace API.Controllers
             //_context.Database.Migrate();
         }
 
+        public CrimeController()
+        {
+        }
+
         [HttpGet]
         public IActionResult Get()
         {
@@ -43,7 +47,7 @@ namespace API.Controllers
         {
             if (user.UserName == null || user.Password == null)
             {
-                return BadRequest("Måste ange användarnamn och lösenord");
+                throw new FormatException("Måste ange användarnamn och lösenord");
             }
 
             var listOfUserNames = _context.Users.Select(n => n.UserName).ToList();
@@ -59,7 +63,7 @@ namespace API.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e);
+                return BadRequest();
             }
         }
 
@@ -120,7 +124,7 @@ namespace API.Controllers
 
             if (password!=correctPass)
             {
-                return Ok("Password incorrect");
+                return BadRequest("Password incorrect");
             }
             
                HttpContext.Session.SetString(SessionUserName, userName);
