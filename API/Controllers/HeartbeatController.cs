@@ -28,20 +28,20 @@ namespace API.Controllers
         [HttpGet("database")]
         public IActionResult DatabaseIsRunning()
         {
-            
-                try
-                {
-                    _context.Database.OpenConnection();
-                    _context.Database.CloseConnection();
-                }
-                catch (Exception)
-                {
-                    return BadRequest();
-                }
 
-                return Ok("Database is running");
-            
-            
+            try
+            {
+                _context.Database.OpenConnection();
+                _context.Database.CloseConnection();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+
+            return Ok("Database is running");
+
+
         }
     }
 }
