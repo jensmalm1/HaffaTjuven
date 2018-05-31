@@ -141,6 +141,21 @@ namespace API.Controllers
 
         }
 
+        [HttpGet("GetSessionUserId")]
+        public IActionResult GetSessionUserId()
+        {
+
+            var userName = HttpContext.Session.GetString(SessionUserName);
+            if (userName == null)
+            {
+                return Ok(0);
+            }
+
+            var userId = _context.Users.FirstOrDefault(x => x.UserName == userName).Id;
+            return Ok(userId);
+
+        }
+
         [HttpGet("GetSessionInformation")]
         public IActionResult GetSessionInformation()
         {

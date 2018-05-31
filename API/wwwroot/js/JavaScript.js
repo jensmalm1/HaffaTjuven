@@ -127,6 +127,25 @@ function GetInformation() {
         });
 }
 
+function GetSessionUserId() {
+
+    $.ajax({
+            url: '/api/GetSessionUserId'
+
+        })
+        .done(function (result) {
+
+            document.getElementById('userId').value = result;
+
+        })
+        .fail(function (xhr, status, error) {
+
+            alert("Går inte att hämta ID");
+        });
+    return result;
+}
+
+
 function GetCommentsFromId() {
 
     $.ajax({
