@@ -108,7 +108,7 @@ namespace API.Controllers
 
             if (!listOfUserNames.Contains(userName))
             {
-                return Ok("Username is incorrect");
+                return BadRequest("Username is incorrect");
             }
 
             var user = _context.Users.FirstOrDefault(x => x.UserName == userName);
@@ -120,7 +120,7 @@ namespace API.Controllers
 
             if (password!=correctPass)
             {
-                return BadRequest("Password incorrect");
+                return BadRequest("Password is incorrect");
             }
             
                HttpContext.Session.SetString(SessionUserName, userName);

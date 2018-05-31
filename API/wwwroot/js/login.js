@@ -13,16 +13,15 @@ $("#logInButton").click(function () {
 
         method: 'post',
 
-        success: function (result) {
-           
-                setTimeout(function () { window.location.href = "../html/index.html"; },2000);
+        success: function(result) {
+            setTimeout(function() { window.location.href = "../html/index.html"; }, 1000);
         },
 
-        error: function (xhr, status, error) {
-
-            alert(result);
+        error: function(xhr, status, error) {
+            alert("Fel användarnamn eller lösenord");
+            location.reload();
         }
-    });
+});
 });
 
 
