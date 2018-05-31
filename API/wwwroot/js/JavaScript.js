@@ -59,7 +59,7 @@ $("#logIn").click(function () {
         },
 
         success: function (result) {
-           
+
 
             alert(result);
 
@@ -99,12 +99,12 @@ function GetUserInformation() {
 
     })
         .done(function (result) {
-            
+
             GetInformation();
 
             $("#userName").text(result);
 
-           
+
 
 
         })
@@ -134,20 +134,20 @@ function GetInformation() {
 }
 
 
-$("#logOutButton").click(function () {
+$("#logOutButton").click(function () { //ANVÄDS EJ
 
     $.ajax({
         url: "/api/EndSession",
 
         data: {
-
         },
 
         method: 'post',
 
         success: function (result) {
 
-            alert(result);
+            
+
 
         },
 
@@ -161,14 +161,14 @@ $("#logOutButton").click(function () {
 function CheckIfLoggedIn(callback) {
 
     $.ajax("/api/GetSessionUser")
-        .done(function(result) {
+        .done(function (result) {
             if (result === "Not logged in") {
                 callback(false);
             } else {
                 callback(true);
             }
         })
-        .fail(function() {
+        .fail(function () {
             alert("fail!");
         });
 

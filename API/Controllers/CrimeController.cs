@@ -163,7 +163,8 @@ namespace API.Controllers
         public IActionResult EndSession()
         {
             HttpContext.Session.Clear();
-            return Ok($"Session ended");
+            return Content(
+                "<html>Session ended. <script>setTimeout(function () { window.location.href = \"../html/index.html\"; },2000);</script></html>", "text/html");
 
         }
 
