@@ -31,15 +31,13 @@
             <a class="nav-link" href="#">Kontakt</a>
             <script src="../js/JavaScript.js" type="text/javascript"></script>
             <script>
-                console.log("dollar", $.ajax)
                 if (CheckIfLoggedIn() === true) {
 
                     document.write(
                         '<p><a href="../html/index.html"><button id="logOutButton"  class="btn btn-default btn-sm"><span class="glyphicon glyphicon-log-out"></span> Logga ut!</button></a></p>');
-                    alert("true");} else {
+                    } else {
                     document.write(
                         '<a class="nav-link" href="../html/login.html" target="_parent" style="text-align: right; position: absolute; right: 0px;">Logga In</a>');
-                    alert();
                 }
             </script>
 
