@@ -104,9 +104,6 @@ function GetUserInformation() {
 
             $("#userName").text(result);
 
-
-
-
         })
         .fail(function (xhr, status, error) {
 
@@ -123,14 +120,30 @@ function GetInformation() {
 
             $("#information").html(result);
 
+        })
+        .fail(function (xhr, status, error) {
 
+            alert("Går inte att hämta informationen");
+        });
+}
+
+function GetCommentsFromId() {
+    alert("A");
+
+    $.ajax({
+        url: '/api/GetCommentsFromId',
+        data: { CrimeId: $('#crimeId').val() },
+        })
+        .done(function (result) {
+            alert("B"),
+
+            $("#commentsFromId").html(result);
 
         })
         .fail(function (xhr, status, error) {
 
             alert("Går inte att hämta informationen");
         });
-
 }
 
 
