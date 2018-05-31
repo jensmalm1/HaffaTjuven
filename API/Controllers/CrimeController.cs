@@ -157,7 +157,23 @@ namespace API.Controllers
 
             }
             return Ok(listOfInformation);
+        }
 
+        [HttpGet("GetCommentsFromId")]
+        public IActionResult GetCommentsFromId(int crimeId)
+        {
+            var information = _context.Informations.Where(i => i.CrimeId == crimeId).ToList();
+
+
+
+            var listOfInformation = new List<string>();
+            foreach (var info in information)
+            {
+
+                listOfInformation.Add($"<tr><td>{info.Content}</td></tr>");
+
+            }
+            return Ok(listOfInformation);
         }
         [HttpGet("EndSession")]
         public IActionResult EndSession()
