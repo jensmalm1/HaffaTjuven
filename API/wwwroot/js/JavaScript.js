@@ -158,15 +158,20 @@ $("#logOutButton").click(function () {
     });
 });
 
-function CheckIfLoggedIn() {
+function CheckIfLoggedIn(callback) {
 
-    $.ajax({
-        url: '/api/GetSessionUser',
-        done: (function(result) {
+    $.ajax("/api/GetSessionUser")
+        .done(function(result) {
+            alert("DONE!");
             if (result === "Not logged in") {
-                return false;
+                callback(false);
+
+            } else {
+                callback(true)
             }
         })
-    });
-    return true;
+        .fail(function() {
+            alert("fail!");
+        });
+
 }
