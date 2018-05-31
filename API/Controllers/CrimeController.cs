@@ -26,6 +26,10 @@ namespace API.Controllers
             //_context.Database.Migrate();
         }
 
+        public CrimeController()
+        {
+        }
+
         [HttpGet]
         public IActionResult Get()
         {
