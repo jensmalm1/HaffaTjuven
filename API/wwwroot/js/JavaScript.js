@@ -160,16 +160,13 @@ $("#logOutButton").click(function () {
 
 function CheckIfLoggedIn() {
 
-    console.log("dollar2", $.ajax)
-
     $.ajax({
         url: '/api/GetSessionUser',
         done: (function(result) {
             if (result === "Not logged in") {
                 return false;
-            } else {
-                return true;
             }
         })
     });
+    return true;
 }
