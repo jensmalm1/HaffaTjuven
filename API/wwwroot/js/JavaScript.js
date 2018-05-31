@@ -162,12 +162,10 @@ function CheckIfLoggedIn(callback) {
 
     $.ajax("/api/GetSessionUser")
         .done(function(result) {
-            alert("DONE!");
             if (result === "Not logged in") {
                 callback(false);
-
             } else {
-                callback(true)
+                callback(true);
             }
         })
         .fail(function() {

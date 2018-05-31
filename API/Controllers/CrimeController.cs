@@ -159,7 +159,7 @@ namespace API.Controllers
             return Ok(listOfInformation);
 
         }
-        [HttpPost("EndSession")]
+        [HttpGet("EndSession")]
         public IActionResult EndSession()
         {
             HttpContext.Session.Clear();
