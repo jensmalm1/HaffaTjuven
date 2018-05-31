@@ -158,21 +158,18 @@ $("#logOutButton").click(function () {
     });
 });
 
-//function CheckIfLoggedIn() {
+function CheckIfLoggedIn() {
 
-//    $.ajax({
-//        url: '/api/GetSessionUser'
+    console.log("dollar2", $.ajax)
 
-//    })
-//        .done(function (result) {
-//            console.log(result);
-//            if (result !== null)
-//                $("#inlog").hidden();
-//            alert(result);
-
-//        })
-//        .fail(function (xhr, status, error) {
-
-//            alert("Sessionsfel");
-//        });
-//}
+    $.ajax({
+        url: '/api/GetSessionUser',
+        done: (function(result) {
+            if (result === "Not logged in") {
+                return false;
+            } else {
+                return true;
+            }
+        })
+    });
+}
